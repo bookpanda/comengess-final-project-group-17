@@ -119,8 +119,6 @@ exports.getCourses = async (req, res) => {
       profileOptions
     ).then((r) => r.json());
 
-    console.log({ data });
-
     res.send(data);
   } catch (error) {
     console.log(error);
@@ -129,11 +127,29 @@ exports.getCourses = async (req, res) => {
 };
 
 // TODO #3.4: Send "GET" request to CV endpoint to get all course assignments based on cv_cid
-exports.getCourseAssignments = (req, res) => {
+exports.getCourseAssignments = async (req, res) => {
   const cv_cid = req.params.cv_cid;
   // You should change the response below.
-  res.send("This route should get all course assignments based on cv_cid.");
-  res.end();
+
+  try {
+    const profileOptions = {
+      headers: {
+        Authorization: `Bearer ${req.session.token.access_token}`,
+      },
+    };
+
+    const data = await fetch(
+      `https://www.mycourseville.com/api/v1/public/get/course/assignments?cv_cid=${cv_cid}`,
+      profileOptions
+    ).then((r) => r.json());
+
+    console.log({ data });
+
+    res.send(data);
+  } catch (error) {
+    console.log(error);
+    console.log("Please logout, then login again.");
+  }
 };
 
 // Outstanding #2
