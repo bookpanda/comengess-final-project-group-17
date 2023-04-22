@@ -11,7 +11,7 @@ dotenv.config({ path: "./.env" });
 const app = require("./app");
 
 const port = 3000;
-const server = app.listen(port, () => {});
+const server = app.listen(port, "127.0.0.1", () => {});
 
 process.on("unhandledRejection", (err) => {
   console.log("UNHANDLED REJECTION! 💥 Shutting down...");

@@ -1,0 +1,10 @@
+const { getCourses } = require('./getCourses');
+const { getCourseAssignments } = require('./getCourseAssignments');
+const { getCourseMaterials } = require('./getCourseMaterials');
+const { getMaterial } = require('./getMaterial');
+const { getCourseMaterialsLinks } = require('./getCourseMaterialsLinks');
+exports.getCourses = getCourses;
+exports.getCourseAssignments = getCourseAssignments;
+exports.getCourseMaterials = getCourseMaterials;
+exports.getMaterial = getMaterial;
+exports.getCourseMaterialsLinks = getCourseMaterialsLinks;
