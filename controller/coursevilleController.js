@@ -9,7 +9,7 @@ const {
   getCourseMaterials,
   getMaterial,
   getCourseMaterialsLinks,
-} = require('../services/index');
+} = require('../services/courseville/index');
 
 const redirect_uri = `http://${process.env.backendIPAddress}/courseville/access_token`;
 const authorization_url = `https://www.mycourseville.com/api/oauth/authorize?response_type=code&client_id=${process.env.client_id}&redirect_uri=${redirect_uri}`;

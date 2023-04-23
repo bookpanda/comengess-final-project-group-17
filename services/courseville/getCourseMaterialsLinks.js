@@ -1,4 +1,4 @@
-const { createAuthHeader } = require('../utils/createAuthHeader');
+const { createAuthHeader } = require('../../utils/createAuthHeader');
 const { getCourseMaterials } = require('./getCourseMaterials');
 const { getMaterial } = require('./getMaterial');
 exports.getCourseMaterialsLinks = async (access_token, cv_cid) => {
