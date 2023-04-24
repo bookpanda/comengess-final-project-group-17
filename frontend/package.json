@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "http-server": "^14.1.1"
+  },
+  "name": "frontend",
+  "description": "",
+  "version": "1.0.0",
+  "main": "script_cv.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bookpanda/compengess-2022-2-activity-8-frontend-group-35.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bookpanda/compengess-2022-2-activity-8-frontend-group-35/issues"
+  },
+  "homepage": "https://github.com/bookpanda/compengess-2022-2-activity-8-frontend-group-35#readme"
+}
