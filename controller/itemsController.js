@@ -9,7 +9,13 @@ const {
   ScanCommand,
 } = require('@aws-sdk/lib-dynamodb');
 
-const { getItems, addItem, deleteItem } = require('../services/items/index');
+const {
+  getItems,
+  addItem,
+  deleteItem,
+  addAllAvailableItems,
+  getSelectedItems,
+} = require('../services/items/index');
 
 // @ts-ignore
 const docClient = new DynamoDBClient({
@@ -43,6 +49,37 @@ exports.deleteItem = async (req, res) => {
     const data = await deleteItem(docClient, req.params.item_id);
     console.log(data);
     res.send(data);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send(err);
+  }
+};
+
+//get all things from course id
+exports.addAllAvailableItems = async (req, res) => {
+  try {
+    const data = await addAllAvailableItems(
+      docClient,
+      req.session.token.access_token,
+      req.params.cv_cid
+    );
+    console.log(data);
+    res.send(data);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send(err);
+  }
+};
+
+exports.getSelectedItems = async (req, res) => {
+  try {
+    const filepaths = await getSelectedItems(
+      docClient,
+      req.session.token.access_token,
+      req.body
+    );
+    console.log(filepaths);
+    res.send(filepaths);
   } catch (err) {
     console.error(err);
     res.status(500).send(err);

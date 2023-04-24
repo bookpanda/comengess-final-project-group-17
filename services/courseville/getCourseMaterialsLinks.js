@@ -8,9 +8,10 @@ exports.getCourseMaterialsLinks = async (access_token, cv_cid) => {
   });
   const links = [];
   for (let i = 0; i < items.length; i++) {
+    console.log(`getMatLink ${i}/${items.length}`);
     const res = await getMaterial(access_token, items[i].itemid);
     links.push({
-      itemid: items[i].itemid,
+      item_id: items[i].itemid,
       title: items[i].title,
       thumbnail: res.data.thumbnail,
       filepath: res.data.filepath,

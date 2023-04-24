@@ -1,6 +1,7 @@
 const { PutCommand } = require('@aws-sdk/lib-dynamodb');
 const { v4: uuidv4 } = require('uuid');
 
+// course_id item_id filepath name thumbnail
 exports.addItem = async (client, body) => {
   const item_id = uuidv4();
   const created_date = Date.now();
