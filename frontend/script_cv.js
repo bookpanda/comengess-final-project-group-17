@@ -74,6 +74,23 @@ const getCourses = async () => {
     console.log(cv_cid);
 }
 
+const getCourseInfo = async () => {
+  const cv_cid = document.getElementById("courseIdInput0").value;
+  const options = {
+    method: "GET",
+    credentials: "include",
+  };
+
+  const data = await fetch(
+    `http://${backendIPAddress}/courseville/get_course_info/${cv_cid}`,
+    options
+  )
+    .then((response) => response.json())
+    .catch((error) => console.error(error));
+
+    console.log(data);
+}
+
 const getCourseMaterials = async () => {
   const cv_cid = document.getElementById("courseIdInput").value;
   const options = {

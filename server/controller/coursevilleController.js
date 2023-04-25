@@ -5,6 +5,7 @@ const url = require('url');
 const querystring = require('querystring');
 const {
   getCourses,
+  getCourseInfo,
   getCourseAssignments,
   getCourseMaterials,
   getMaterial,
@@ -114,6 +115,18 @@ exports.getProfileInformation = (req, res) => {
 exports.getCourses = async (req, res) => {
   try {
     const data = await getCourses(req.session.token.access_token);
+    console.log(data);
+    res.send(data);
+  } catch (error) {
+    console.log(error);
+    console.log('Please logout, then login again.');
+  }
+};
+
+exports.getCourseInfo = async (req, res) => {
+  const cv_cid = req.params.cv_cid;
+  try {
+    const data = await getCourseInfo(req.session.token.access_token, cv_cid);
     console.log(data);
     res.send(data);
   } catch (error) {
