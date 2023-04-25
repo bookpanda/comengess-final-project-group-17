@@ -10,8 +10,9 @@ exports.getSelectedItems = async (client, access_token, body) => {
     const item_id = body[i].id;
     const data = await getMaterial(access_token, item_id);
     const url = data.data.filepath;
-    filepaths.push(url);
+    filepaths.push(`wget ${url}`);
     console.log(data);
   }
+
   return filepaths;
 };

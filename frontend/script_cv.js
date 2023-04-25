@@ -157,29 +157,34 @@ const downloadSelectedItems = async () => {
     `http://${backendIPAddress}/items/download_selected`,
     options
   )
-    .then((response) => response.json())
-    .catch((error) => console.error(error));
+  .then( res => res.blob() )
+  .then( blob => {
+    const file = window.URL.createObjectURL(blob);
+    window.location.assign(file);
+  })
+  .catch((error) => console.error(error));
+    // .then((response) => response.json())
 
-    console.log(data);
-    const fetchOptions = {
-      headers:{
-        "Access-Control-Allow-Origin": "*",
-      }
-    };
-    for(let i=0;i<data.length;i++){
-      await fetch(data[i], fetchOptions).then( res => res.blob() )
-      .then( blob => {
-        var url = window.URL.createObjectURL(blob);
-        var a = document.createElement('a');
-        a.href = url;
-        a.setAttribute("download", "");
-        // a.target = "_blank"
-        // a.download = "filename.xlsx";
-        document.body.appendChild(a); // we need to append the element to the dom -> otherwise it will not work in firefox
-        a.click();    
-        a.remove(); 
-      });
-    }
+    // console.log(data);
+    // const fetchOptions = {
+    //   headers:{
+    //     "Access-Control-Allow-Origin": "*",
+    //   }
+    // };
+    // for(let i=0;i<data.length;i++){
+    //   await fetch(data[i], fetchOptions).then( res => res.blob() )
+    //   .then( blob => {
+    //     var url = window.URL.createObjectURL(blob);
+    //     var a = document.createElement('a');
+    //     a.href = url;
+    //     a.setAttribute("download", "");
+    //     // a.target = "_blank"
+    //     // a.download = "filename.xlsx";
+    //     document.body.appendChild(a); // we need to append the element to the dom -> otherwise it will not work in firefox
+    //     a.click();    
+    //     a.remove(); 
+    //   });
+    // }
 }
 
 // TODO #3.5: Send Get Course Assignments ("GET") request with cv_cid to backend server
