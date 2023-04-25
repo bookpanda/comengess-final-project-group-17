@@ -9,6 +9,8 @@ Solution: try testing it on Chrome with CORS disabled
 
 
 ## Backend
+Before anything, create an empty folder called "spawn" inside "server" folder. This is for shell command zip downloads
+
 pnpm i
 
 pnpm start:dev
