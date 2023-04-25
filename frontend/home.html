@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="style.css"></link>
         <script src="script_cv.js" defer></script>
     </head>
-    <body onload=getUserProfile();getCompEngEssCid();>
+    <body onload=getUserProfile();getCourses();>
         <div>
             <section class="section-right">
                 <button class="button logout-button" onclick=logout()>Logout</button>
@@ -26,6 +26,11 @@
                 <p id="info"> The CV_cid value of Computer Engineering Essential subject is <span id="ces-cid-value"></span>.</p>
             </section>
             <section>
+                <select name = "subject-select" id = "subject-select">
+                    Get Course Test
+                    <option value="none">-- Please Select --</option>
+                    
+                </select>
                 <button onclick=getCourses()>
                     get courses
                 </button>

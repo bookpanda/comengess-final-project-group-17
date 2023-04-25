@@ -68,14 +68,44 @@ const getCourses = async () => {
     .then((response) => response.json())
     .catch((error) => console.error(error));
 
-    const cv_cid = data.data.student.map(
+    
+    
+    const cv_cid_array = data.data.student.map(
       (c) => c.cv_cid
     );
-    console.log(cv_cid);
+  
+    
+    cv_cid_array.forEach(async (cv_cid) => {
+      await getCourseInfo(cv_cid);
+    });
+   
+
 }
 
-const getCourseInfo = async () => {
-  const cv_cid = document.getElementById("courseIdInput0").value;
+const getCourseInfo = async (cv_cid) => {
+  const options = {
+    method: "GET",
+    credentials: "include",
+  };
+
+  const data = await fetch(
+    `http://${backendIPAddress}/courseville/get_course_info/${cv_cid}`,
+    options
+  )
+    .then((response) => response.json())
+    .catch((error) => console.error(error));
+
+    const select = document.getElementById("subject-select");
+
+    select.innerHTML += `<option value="${cv_cid}">${data.data.title}</option>`;
+
+  console.log(data);
+};
+
+
+/*const getCourseInfo = async () => {
+  //const cv_cid = document.getElementById("courseIdInput0").value;
+  const cv_cid = getCourses.cv_cid;
   const options = {
     method: "GET",
     credentials: "include",
@@ -89,10 +119,11 @@ const getCourseInfo = async () => {
     .catch((error) => console.error(error));
 
     console.log(data);
-}
+}*/
 
 const getCourseMaterials = async () => {
-  const cv_cid = document.getElementById("courseIdInput").value;
+  const cv_cid = document.getElementById("subject-select").value;
+  console.log(cv_cid);
   const options = {
     method: "GET",
     credentials: "include",
