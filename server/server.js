@@ -1,6 +1,7 @@
 // @ts-check
 
 import 'dotenv/config';
+
 import app from './app.js';
 
 process.on('uncaughtException', (err) => {
@@ -11,7 +12,9 @@ process.on('uncaughtException', (err) => {
 });
 
 const PORT = 3000;
-const server = app.listen(PORT, '127.0.0.1', () => {});
+const server = app.listen(PORT, () => {
+  console.log(`Server ready at http://localhost:${PORT}`);
+});
 
 process.on('unhandledRejection', (err) => {
   console.log('UNHANDLED REJECTION! 💥 Shutting down...');
