@@ -12,7 +12,7 @@ process.on('uncaughtException', (err) => {
 });
 
 const PORT = 3000;
-const server = app.listen(PORT, () => {
+const server = app.listen(PORT, '127.0.0.1', () => {
   console.log(`Server ready at http://localhost:${PORT}`);
 });
 
