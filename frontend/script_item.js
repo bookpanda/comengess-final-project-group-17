@@ -1,14 +1,7 @@
-// TODO #4.0: Change this IP address to EC2 instance public IP address when you are going to deploy this web application
-const backendIPAddress = '10.201.236.173:3000';
+import { backendIPAddress, getGroupNumber } from './utils/contants.js';
 
 let itemsData;
 
-// TODO #2.1: Edit group number
-const getGroupNumber = () => {
-  return 35;
-};
-
-// TODO #2.2: Show group members
 const showGroupMembers = async () => {
   const member_list = document.getElementById('member-list');
   member_list.innerHTML = '';
@@ -27,18 +20,15 @@ const showGroupMembers = async () => {
         member_list.innerHTML += `
           <li>${member.full_name}</li>
           `;
-        // ----------------- FILL IN YOUR CODE UNDER THIS AREA ONLY ----------------- //
-        // member_dropdown.innerHTML += `${member_list}`;
         member_dropdown.innerHTML += `
           <option value='${member.full_name}'>${member.full_name}</option>
             `;
-        // ----------------- FILL IN YOUR CODE ABOVE THIS AREA ONLY ----------------- //
       });
     })
     .catch((error) => console.error(error));
 };
+window.showGroupMembers = showGroupMembers;
 
-// TODO #2.3: Send Get items ("GET") request to backend server and store the response in itemsData variable
 const getItemsFromDB = async () => {
   const options = {
     method: 'GET',
@@ -48,16 +38,96 @@ const getItemsFromDB = async () => {
     .then((r) => r.json())
     .catch((err) => console.error(err));
 };
+window.getItemsFromDB = getItemsFromDB;
 
-// TODO #2.4: Show items in table (Sort itemsData variable based on created_date in ascending order)
+const getCourseMaterialsFromDb = async () => {
+  const cv_cid = document.getElementById('subject-select').value;
+  console.log(cv_cid);
+  const options = {
+    method: 'GET',
+    credentials: 'include',
+  };
+
+  const data = await fetch(
+    `http://${backendIPAddress}/items/${cv_cid}`,
+    options
+  )
+    .then((response) => response.json())
+    .catch((error) => console.error(error));
+
+  console.log(data);
+};
+window.getCourseMaterialsFromDb = getCourseMaterialsFromDb;
+
+const addAllAvailableItems = async () => {
+  const cv_cid = document.getElementById('courseIdInput3').value;
+  const options = {
+    method: 'POST',
+    credentials: 'include',
+  };
+
+  const data = await fetch(
+    `http://${backendIPAddress}/items/add_all/${cv_cid}`,
+    options
+  )
+    .then((response) => response.json())
+    .catch((error) => console.error(error));
+
+  console.log(data);
+};
+window.addAllAvailableItems = addAllAvailableItems;
+
+const downloadSelectedItems = async () => {
+  const cv_cid = document.getElementById('courseIdInput3').value;
+  const options = {
+    method: 'POST',
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify([{ id: 837512 }, { id: 837754 }, { id: 830878 }]),
+  };
+
+  const data = await fetch(
+    `http://${backendIPAddress}/items/download_selected`,
+    options
+  )
+    .then((res) => res.blob())
+    .then((blob) => {
+      const file = window.URL.createObjectURL(blob);
+      window.location.assign(file);
+    })
+    .catch((error) => console.error(error));
+  // .then((response) => response.json())
+
+  // console.log(data);
+  // const fetchOptions = {
+  //   headers:{
+  //     "Access-Control-Allow-Origin": "*",
+  //   }
+  // };
+  // for(let i=0;i<data.length;i++){
+  //   await fetch(data[i], fetchOptions).then( res => res.blob() )
+  //   .then( blob => {
+  //     var url = window.URL.createObjectURL(blob);
+  //     var a = document.createElement('a');
+  //     a.href = url;
+  //     a.setAttribute("download", "");
+  //     // a.target = "_blank"
+  //     // a.download = "filename.xlsx";
+  //     document.body.appendChild(a); // we need to append the element to the dom -> otherwise it will not work in firefox
+  //     a.click();
+  //     a.remove();
+  //   });
+  // }
+};
+window.downloadSelectedItems = downloadSelectedItems;
+
 const showItemsInTable = (itemsData) => {
   const table_body = document.getElementById('main-table-body');
   table_body.innerHTML = '';
-  // ----------------- FILL IN YOUR CODE UNDER THIS AREA ONLY ----------------- //
   itemsData.sort((a, b) => a.created_date - b.created_date);
-  // ----------------- FILL IN YOUR CODE ABOVE THIS AREA ONLY ----------------- //
   itemsData.map((item) => {
-    // ----------------- FILL IN YOUR CODE UNDER THIS AREA ONLY ----------------- //
     table_body.innerHTML += `
         <tr id="${item.item_id}">
             <td>${item.item}</td>
@@ -66,11 +136,10 @@ const showItemsInTable = (itemsData) => {
             <td><button class="delete-row" onclick="deleteItem('${item.item_id}')">ลบ</button></td>
         </tr>
         `;
-    // ----------------- FILL IN YOUR CODE ABOVE THIS AREA ONLY ----------------- //
   });
 };
+window.showItemsInTable = showItemsInTable;
 
-// TODO #2.5: Send Add an item ("POST") request to backend server and update items in the table
 const addItem = async () => {
   const item = document.getElementById('item-to-add').value;
   const name = document.getElementById('name-to-add').value;
@@ -87,8 +156,8 @@ const addItem = async () => {
 
   redrawDOM();
 };
+window.addItem = addItem;
 
-// TODO 2.6: Send Delete an item ("DELETE") request to backend server and update items in the table
 const deleteItem = async (item_id) => {
   await fetch(`http://${backendIPAddress}/items/${item_id}`, {
     method: 'DELETE',
@@ -97,6 +166,7 @@ const deleteItem = async (item_id) => {
 
   redrawDOM();
 };
+window.deleteItem = deleteItem;
 
 const redrawDOM = () => {
   window.document.dispatchEvent(
@@ -109,6 +179,7 @@ const redrawDOM = () => {
   document.getElementById('name-to-add').value = '0';
   document.getElementById('price-to-add').value = '';
 };
+window.redrawDOM = redrawDOM;
 
 document.getElementById('group-no').innerHTML = getGroupNumber();
 

@@ -1,16 +1,10 @@
-// TODO #4.0: Change this IP address to EC2 instance public IP address when you are going to deploy this web application
-const backendIPAddress = '127.0.0.1:3000';
+import { backendIPAddress, getGroupNumber } from './utils/contants.js';
 
 const authorizeApplication = () => {
   window.location.href = `http://${backendIPAddress}/courseville/auth_app`;
 };
+window.authorizeApplication = authorizeApplication;
 
-// TODO #3.1: Change group number
-const getGroupNumber = () => {
-  return 35;
-};
-
-// Example: Send Get user profile ("GET") request to backend server and show the response on the webpage
 const getUserProfile = async () => {
   const options = {
     method: 'GET',
@@ -32,9 +26,8 @@ const getUserProfile = async () => {
     })
     .catch((error) => console.error(error));
 };
+window.getUserProfile = getUserProfile;
 
-// TODO #3.3: Send Get Courses ("GET") request to backend server and filter the response to get Comp Eng Ess CV_cid
-//            and display the result on the webpage
 const getCompEngEssCid = async () => {
   const options = {
     method: 'GET',
@@ -54,6 +47,7 @@ const getCompEngEssCid = async () => {
 
   document.getElementById('ces-cid-value').innerHTML = cv_cid;
 };
+window.getCompEngEssCid = getCompEngEssCid;
 
 const getCourses = async () => {
   const options = {
@@ -74,6 +68,7 @@ const getCourses = async () => {
     await getCourseInfo(cv_cid);
   });
 };
+window.getCourses = getCourses;
 
 const getCourseInfo = async (cv_cid) => {
   const options = {
@@ -94,6 +89,7 @@ const getCourseInfo = async (cv_cid) => {
 
   console.log(data);
 };
+window.getCourseInfo = getCourseInfo;
 
 /*const getCourseInfo = async () => {
   //const cv_cid = document.getElementById("courseIdInput0").value;
@@ -130,24 +126,7 @@ const getCourseMaterials = async () => {
 
   console.log(data);
 };
-
-const getCourseMaterialsFromDb = async () => {
-  const cv_cid = document.getElementById('subject-select').value;
-  console.log(cv_cid);
-  const options = {
-    method: 'GET',
-    credentials: 'include',
-  };
-
-  const data = await fetch(
-    `http://${backendIPAddress}/items/${cv_cid}`,
-    options
-  )
-    .then((response) => response.json())
-    .catch((error) => console.error(error));
-
-  console.log(data);
-};
+window.getCourseMaterials = getCourseMaterials;
 
 const getMaterial = async () => {
   const item_id = document.getElementById('itemIdInput').value;
@@ -165,6 +144,7 @@ const getMaterial = async () => {
 
   console.log(data);
 };
+window.getMaterial = getMaterial;
 
 const getCourseMaterialsLinks = async () => {
   const cv_cid = document.getElementById('courseIdInput2').value;
@@ -182,71 +162,8 @@ const getCourseMaterialsLinks = async () => {
 
   console.log(data);
 };
+window.getCourseMaterialsLinks = getCourseMaterialsLinks;
 
-const addAllAvailableItems = async () => {
-  const cv_cid = document.getElementById('courseIdInput3').value;
-  const options = {
-    method: 'POST',
-    credentials: 'include',
-  };
-
-  const data = await fetch(
-    `http://${backendIPAddress}/items/add_all/${cv_cid}`,
-    options
-  )
-    .then((response) => response.json())
-    .catch((error) => console.error(error));
-
-  console.log(data);
-};
-
-const downloadSelectedItems = async () => {
-  const cv_cid = document.getElementById('courseIdInput3').value;
-  const options = {
-    method: 'POST',
-    credentials: 'include',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify([{ id: 837512 }, { id: 837754 }, { id: 830878 }]),
-  };
-
-  const data = await fetch(
-    `http://${backendIPAddress}/items/download_selected`,
-    options
-  )
-    .then((res) => res.blob())
-    .then((blob) => {
-      const file = window.URL.createObjectURL(blob);
-      window.location.assign(file);
-    })
-    .catch((error) => console.error(error));
-  // .then((response) => response.json())
-
-  // console.log(data);
-  // const fetchOptions = {
-  //   headers:{
-  //     "Access-Control-Allow-Origin": "*",
-  //   }
-  // };
-  // for(let i=0;i<data.length;i++){
-  //   await fetch(data[i], fetchOptions).then( res => res.blob() )
-  //   .then( blob => {
-  //     var url = window.URL.createObjectURL(blob);
-  //     var a = document.createElement('a');
-  //     a.href = url;
-  //     a.setAttribute("download", "");
-  //     // a.target = "_blank"
-  //     // a.download = "filename.xlsx";
-  //     document.body.appendChild(a); // we need to append the element to the dom -> otherwise it will not work in firefox
-  //     a.click();
-  //     a.remove();
-  //   });
-  // }
-};
-
-// TODO #3.5: Send Get Course Assignments ("GET") request with cv_cid to backend server
-//            and create Comp Eng Ess assignments table based on the response (itemid, title)
 const createCompEngEssAssignmentTable = async () => {
   const table_body = document.getElementById('main-table-body');
   table_body.innerHTML = '';
@@ -278,9 +195,11 @@ const createCompEngEssAssignmentTable = async () => {
     `;
   });
 };
+window.createCompEngEssAssignmentTable = createCompEngEssAssignmentTable;
 
 const logout = async () => {
   window.location.href = `http://${backendIPAddress}/courseville/logout`;
 };
+window.logout = logout;
 
 document.getElementById('group-id').innerHTML = getGroupNumber();

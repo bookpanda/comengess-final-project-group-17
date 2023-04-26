@@ -6,13 +6,14 @@
     <title>MyCourseville API Home Pages</title>
     <link rel="stylesheet" href="style.css">
     </link>
-    <script src="script_cv.js" defer></script>
+    <script type="module" src="script_cv.js" defer></script>
+    <script type="module" src="script_item.js" defer></script>
 </head>
 
-<body onload=getUserProfile();getCourses();>
+<body onload=getUserProfile();getCourses();getCompEngEssCid();>
     <div>
         <section class="section-right">
-            <button class="button logout-button" onclick=logout()>Logout</button>
+            <button class="button logout-button" id="logout-button" onclick=logout()>Logout</button>
         </section>
         <section>
             <header>
