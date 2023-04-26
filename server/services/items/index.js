@@ -1,9 +1,11 @@
 const { getItems } = require('./getItems');
+const { getCourseItems } = require('./getCourseItems');
 const { addItem } = require('./addItem');
 const { deleteItem } = require('./deleteItem');
 const { addAllAvailableItems } = require('./addAllAvailableItems');
 const { getSelectedItems } = require('./getSelectedItems');
 exports.getItems = getItems;
+exports.getCourseItems = getCourseItems;
 exports.addItem = addItem;
 exports.deleteItem = deleteItem;
 exports.addAllAvailableItems = addAllAvailableItems;

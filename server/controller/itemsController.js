@@ -16,6 +16,7 @@ const {
 
 const {
   getItems,
+  getCourseItems,
   addItem,
   deleteItem,
   addAllAvailableItems,
@@ -30,8 +31,18 @@ const docClient = new DynamoDBClient({
 exports.getItems = async (req, res) => {
   try {
     const data = await getItems(docClient);
-    console.log(data);
     res.send(data.Items);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send(err);
+  }
+};
+
+exports.getCourseItems = async (req, res) => {
+  const cv_cid = req.params.cv_cid;
+  try {
+    const data = await getCourseItems(docClient, cv_cid);
+    res.send(data);
   } catch (err) {
     console.error(err);
     res.status(500).send(err);
@@ -41,7 +52,6 @@ exports.getItems = async (req, res) => {
 exports.addItem = async (req, res) => {
   try {
     const data = await addItem(docClient, req.body);
-    console.log(data);
     res.send(data);
   } catch (err) {
     console.error(err);
@@ -52,7 +62,6 @@ exports.addItem = async (req, res) => {
 exports.deleteItem = async (req, res) => {
   try {
     const data = await deleteItem(docClient, req.params.item_id);
-    console.log(data);
     res.send(data);
   } catch (err) {
     console.error(err);
@@ -68,7 +77,6 @@ exports.addAllAvailableItems = async (req, res) => {
       req.session.token.access_token,
       req.params.cv_cid
     );
-    console.log(data);
     res.send(data);
   } catch (err) {
     console.error(err);
