@@ -1,26 +1,30 @@
-const express = require('express');
-const coursevilleController = require('../controller/coursevilleController');
+// @ts-check
 
-const router = express.Router();
+import { Router } from 'express';
+import {
+  authApp,
+  accessToken,
+  getProfileInformation,
+  getCourses,
+  getCourseInfo,
+  getCourseAssignments,
+  getCourseMaterials,
+  getCourseMaterialsLinks,
+  getMaterial,
+  logout,
+} from '../controller/coursevilleController.js';
 
-router.get('/auth_app', coursevilleController.authApp);
-router.get('/access_token', coursevilleController.accessToken);
-router.get('/get_profile_info', coursevilleController.getProfileInformation);
-router.get('/get_courses', coursevilleController.getCourses);
-router.get('/get_course_info/:cv_cid', coursevilleController.getCourseInfo);
-router.get(
-  '/get_course_assignments/:cv_cid',
-  coursevilleController.getCourseAssignments
-);
-router.get(
-  '/get_course_materials/:cv_cid',
-  coursevilleController.getCourseMaterials
-);
-router.get(
-  '/get_course_materials_links/:cv_cid',
-  coursevilleController.getCourseMaterialsLinks
-);
-router.get('/get_material/:item_id', coursevilleController.getMaterial);
-router.get('/logout', coursevilleController.logout);
+const router = Router();
 
-module.exports = router;
+router.get('/auth_app', authApp);
+router.get('/access_token', accessToken);
+router.get('/get_profile_info', getProfileInformation);
+router.get('/get_courses', getCourses);
+router.get('/get_course_info/:cv_cid', getCourseInfo);
+router.get('/get_course_assignments/:cv_cid', getCourseAssignments);
+router.get('/get_course_materials/:cv_cid', getCourseMaterials);
+router.get('/get_course_materials_links/:cv_cid', getCourseMaterialsLinks);
+router.get('/get_material/:item_id', getMaterial);
+router.get('/logout', logout);
+
+export default router;

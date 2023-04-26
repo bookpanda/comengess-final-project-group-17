@@ -1,6 +1,12 @@
-const { DeleteCommand } = require('@aws-sdk/lib-dynamodb');
+// @ts-check
 
-exports.deleteItem = async (client, item_id) => {
+import { DeleteCommand } from '@aws-sdk/lib-dynamodb';
+
+/**
+ * @param {import('@aws-sdk/client-dynamodb').DynamoDBClient} client
+ * @param {string} item_id
+ */
+export async function deleteItem(client, item_id) {
   const params = {
     TableName: process.env.aws_table_name,
     Key: {
@@ -10,4 +16,4 @@ exports.deleteItem = async (client, item_id) => {
   console.log(item_id);
   const data = await client.send(new DeleteCommand(params));
   return data;
-};
+}

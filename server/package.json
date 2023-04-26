@@ -1,15 +1,13 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
+  "private": true,
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "node server.js",
     "start:dev": "nodemon server.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.289.0",
     "@aws-sdk/lib-dynamodb": "^3.289.0",
@@ -21,7 +19,8 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.21",
-    "prettier": "^2.8.7"
+    "prettier": "^2.8.7",
+    "typescript": "^5.0.4"
   },
   "engines": {
     "node": "^18.12.0"

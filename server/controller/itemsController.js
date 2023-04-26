@@ -1,33 +1,23 @@
 // @ts-check
 
-const dotenv = require('dotenv');
-const path = require('path');
-const mime = require('mime');
-const { spawn } = require('child_process');
-const fs = require('fs');
+import { spawn } from 'node:child_process';
 
-dotenv.config();
-const { DynamoDBClient } = require('@aws-sdk/client-dynamodb');
-const {
-  PutCommand,
-  DeleteCommand,
-  ScanCommand,
-} = require('@aws-sdk/lib-dynamodb');
+import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 
-const {
+import {
   getItems,
   addItem,
   deleteItem,
   addAllAvailableItems,
   getSelectedItems,
-} = require('../services/items/index');
+} from '../services/items/index.js';
 
-// @ts-ignore
 const docClient = new DynamoDBClient({
   regions: process.env.AWS_REGION,
 });
 
-exports.getItems = async (req, res) => {
+/** @satisfies {import('express').RequestHandler} */
+export const getItems = async (req, res) => {
   try {
     const data = await getItems(docClient);
     console.log(data);
@@ -38,7 +28,8 @@ exports.getItems = async (req, res) => {
   }
 };
 
-exports.addItem = async (req, res) => {
+/** @satisfies {import('express').RequestHandler} */
+export const addItem = async (req, res) => {
   try {
     const data = await addItem(docClient, req.body);
     console.log(data);
@@ -49,7 +40,8 @@ exports.addItem = async (req, res) => {
   }
 };
 
-exports.deleteItem = async (req, res) => {
+/** @satisfies {import('express').RequestHandler} */
+export const deleteItem = async (req, res) => {
   try {
     const data = await deleteItem(docClient, req.params.item_id);
     console.log(data);
@@ -60,8 +52,9 @@ exports.deleteItem = async (req, res) => {
   }
 };
 
-//get all things from course id
-exports.addAllAvailableItems = async (req, res) => {
+// get all things from course id
+/** @satisfies {import('express').RequestHandler} */
+export const addAllAvailableItems = async (req, res) => {
   try {
     const data = await addAllAvailableItems(
       docClient,
@@ -76,7 +69,8 @@ exports.addAllAvailableItems = async (req, res) => {
   }
 };
 
-exports.getSelectedItems = async (req, res) => {
+/** @satisfies {import('express').RequestHandler} */
+export const getSelectedItems = async (req, res) => {
   try {
     const filepaths = await getSelectedItems(
       docClient,

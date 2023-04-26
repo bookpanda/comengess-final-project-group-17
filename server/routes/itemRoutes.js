@@ -1,12 +1,20 @@
-const express = require('express');
-const itemsController = require('../controller/itemsController');
+// @ts-check
 
-const router = express.Router();
+import { Router } from 'express';
+import {
+  getItems,
+  addItem,
+  deleteItem,
+  addAllAvailableItems,
+  getSelectedItems,
+} from '../controller/itemsController.js';
 
-router.get('/', itemsController.getItems);
-router.post('/', itemsController.addItem);
-router.delete('/:item_id', itemsController.deleteItem);
-router.post('/add_all/:cv_cid', itemsController.addAllAvailableItems);
-router.post('/download_selected', itemsController.getSelectedItems);
+const router = Router();
 
-module.exports = router;
+router.get('/', getItems);
+router.post('/', addItem);
+router.delete('/:item_id', deleteItem);
+router.post('/add_all/:cv_cid', addAllAvailableItems);
+router.post('/download_selected', getSelectedItems);
+
+export default router;
