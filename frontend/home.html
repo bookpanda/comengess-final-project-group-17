@@ -47,21 +47,6 @@
                 <button onclick=addCourseMaterialsToDb()>
                     addCourseMaterialsToDb
                 </button>
-            </div>
-            <div>
-                <input type="text" placeholder="item id" id="itemIdInput">
-                <button onclick=getMaterial()>
-                    get material
-                </button>
-            </div>
-            <div>
-                <input type="text" placeholder="course id" id="courseIdInput2">
-                <button onclick=getCourseMaterialsLinks()>
-                    get materialsLinks
-                </button>
-            </div>
-            <div>
-                <!-- <input type="text" placeholder="course id" id="courseIdInput3"> -->
                 <button onclick=downloadSelectedItems()>
                     download zip
                 </button>
@@ -73,6 +58,7 @@
                 <thead>
                     <tr id="main-table-head">
                         <th>Id</th>
+                        <th>ZIP?</th>
                         <th></th>
                         <th>Title</th>
                     </tr>
@@ -80,6 +66,7 @@
                 <tbody id="main-table-body">
                     <tr id=0>
                         <td>...</td>
+                        <td></td>
                         <td></td>
                         <td>...</td>
                     </tr>

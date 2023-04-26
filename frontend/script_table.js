@@ -16,6 +16,9 @@ export const createMaterialsTable = async () => {
           ${mat.item_id}
         </td>
         <td>
+          <input type="checkbox" id="${mat.item_id}" name="${mat.item_id}" value="${mat.item_id}" checked>
+        </td>
+        <td>
           <img class="material-icon" alt="icon" src="${mat.thumbnail}" />
         </td>
         <td>

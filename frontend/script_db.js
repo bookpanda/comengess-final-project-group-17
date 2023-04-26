@@ -22,7 +22,14 @@ const addCourseMaterialsToDb = async () => {
 window.addCourseMaterialsToDb = addCourseMaterialsToDb;
 
 const downloadSelectedItems = async () => {
-  const body = [{ id: 837512 }, { id: 837754 }, { id: 830878 }];
+  const table = document.getElementById('main-table-body').rows;
+  console.log(table);
+  const body = [];
+  for (let i = 0; i < table.length; i++) {
+    const inputTag = table[i].getElementsByTagName('input')[0];
+    if (inputTag.checked) body.push({ id: inputTag.value });
+  }
+  console.log(body);
   await dbDownloadSelectedMaterials(body);
 };
 window.downloadSelectedItems = downloadSelectedItems;
