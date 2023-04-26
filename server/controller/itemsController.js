@@ -3,6 +3,9 @@
 import { spawn } from 'node:child_process';
 import path from 'node:path';
 
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 
 import * as ItemsService from '../services/items/index.js';
@@ -103,6 +106,7 @@ export const getSelectedItems = async (req, res) => {
 
     download.on('close', (code) => {
       console.log(`child process exited with code ${code}`);
+      const __dirname = dirname(fileURLToPath(import.meta.url));
       const file = path.join(__dirname, '../spawn/download_mcv.zip');
       // console.log(file);
       res.download(file);
