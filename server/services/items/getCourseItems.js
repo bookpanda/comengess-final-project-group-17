@@ -1,6 +1,12 @@
-const { ScanCommand } = require('@aws-sdk/lib-dynamodb');
+// @ts-check
 
-exports.getCourseItems = async (client, cv_cid) => {
+import { ScanCommand } from '@aws-sdk/lib-dynamodb';
+
+/**
+ * @param {import('@aws-sdk/client-dynamodb').DynamoDBClient} client
+ * @param {string} cv_cid
+ */
+export async function getCourseItems(client, cv_cid) {
   const params = {
     TableName: process.env.aws_table_name,
     FilterExpression: '#cv_cid = :cv_cid',
@@ -10,5 +16,6 @@ exports.getCourseItems = async (client, cv_cid) => {
     },
   };
   const data = await client.send(new ScanCommand(params));
+
   return data;
-};
+}
