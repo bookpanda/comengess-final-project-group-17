@@ -1,3 +1,7 @@
+import {
+  dbAddCourseMaterials,
+  dbGetCourseMaterials,
+} from './apis/dbApi/index.js';
 import { backendIPAddress, getGroupNumber } from './utils/contants.js';
 
 let itemsData;
@@ -29,53 +33,19 @@ const showGroupMembers = async () => {
 };
 window.showGroupMembers = showGroupMembers;
 
-const getItemsFromDB = async () => {
-  const options = {
-    method: 'GET',
-    credentials: 'include',
-  };
-  itemsData = await fetch(`http://${backendIPAddress}/items`, options)
-    .then((r) => r.json())
-    .catch((err) => console.error(err));
-};
-window.getItemsFromDB = getItemsFromDB;
-
 const getCourseMaterialsFromDb = async () => {
   const cv_cid = document.getElementById('subject-select').value;
-  console.log(cv_cid);
-  const options = {
-    method: 'GET',
-    credentials: 'include',
-  };
-
-  const data = await fetch(
-    `http://${backendIPAddress}/items/${cv_cid}`,
-    options
-  )
-    .then((response) => response.json())
-    .catch((error) => console.error(error));
-
+  const data = await dbGetCourseMaterials(cv_cid);
   console.log(data);
 };
 window.getCourseMaterialsFromDb = getCourseMaterialsFromDb;
 
-const addAllAvailableItems = async () => {
-  const cv_cid = document.getElementById('courseIdInput3').value;
-  const options = {
-    method: 'POST',
-    credentials: 'include',
-  };
-
-  const data = await fetch(
-    `http://${backendIPAddress}/items/add_all/${cv_cid}`,
-    options
-  )
-    .then((response) => response.json())
-    .catch((error) => console.error(error));
-
+const addCourseMaterialsToDb = async () => {
+  const cv_cid = document.getElementById('subject-select').value;
+  const data = await dbAddCourseMaterials(cv_cid);
   console.log(data);
 };
-window.addAllAvailableItems = addAllAvailableItems;
+window.addCourseMaterialsToDb = addCourseMaterialsToDb;
 
 const downloadSelectedItems = async () => {
   const cv_cid = document.getElementById('courseIdInput3').value;
@@ -181,7 +151,7 @@ const redrawDOM = () => {
 };
 window.redrawDOM = redrawDOM;
 
-document.getElementById('group-no').innerHTML = getGroupNumber();
+// document.getElementById('group-no').innerHTML = getGroupNumber();
 
 document.addEventListener('DOMContentLoaded', async function (event) {
   console.log('Showing group members.');

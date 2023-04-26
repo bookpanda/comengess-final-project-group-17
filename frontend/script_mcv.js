@@ -1,3 +1,10 @@
+import {
+  fetchGetCourses,
+  fetchGetCourseInfo,
+  fetchGetCourseMaterials,
+  fetchGetMaterial,
+  fetchGetCourseMaterialsLinks,
+} from './apis/mcvApi/index.js';
 import { backendIPAddress, getGroupNumber } from './utils/contants.js';
 
 const authorizeApplication = () => {
@@ -50,20 +57,8 @@ const getCompEngEssCid = async () => {
 window.getCompEngEssCid = getCompEngEssCid;
 
 const getCourses = async () => {
-  const options = {
-    method: 'GET',
-    credentials: 'include',
-  };
-
-  const data = await fetch(
-    `http://${backendIPAddress}/courseville/get_courses`,
-    options
-  )
-    .then((response) => response.json())
-    .catch((error) => console.error(error));
-
+  const data = await fetchGetCourses();
   const cv_cid_array = data.data.student.map((c) => c.cv_cid);
-
   cv_cid_array.forEach(async (cv_cid) => {
     await getCourseInfo(cv_cid);
   });
@@ -71,95 +66,31 @@ const getCourses = async () => {
 window.getCourses = getCourses;
 
 const getCourseInfo = async (cv_cid) => {
-  const options = {
-    method: 'GET',
-    credentials: 'include',
-  };
-
-  const data = await fetch(
-    `http://${backendIPAddress}/courseville/get_course_info/${cv_cid}`,
-    options
-  )
-    .then((response) => response.json())
-    .catch((error) => console.error(error));
-
+  const data = await fetchGetCourseInfo(cv_cid);
   const select = document.getElementById('subject-select');
-
   select.innerHTML += `<option value="${cv_cid}">${data.data.title}</option>`;
 
   console.log(data);
 };
 window.getCourseInfo = getCourseInfo;
 
-/*const getCourseInfo = async () => {
-  //const cv_cid = document.getElementById("courseIdInput0").value;
-  const cv_cid = getCourses.cv_cid;
-  const options = {
-    method: "GET",
-    credentials: "include",
-  };
-
-  const data = await fetch(
-    `http://${backendIPAddress}/courseville/get_course_info/${cv_cid}`,
-    options
-  )
-    .then((response) => response.json())
-    .catch((error) => console.error(error));
-
-    console.log(data);
-}*/
-
 const getCourseMaterials = async () => {
   const cv_cid = document.getElementById('subject-select').value;
-  console.log(cv_cid);
-  const options = {
-    method: 'GET',
-    credentials: 'include',
-  };
-
-  const data = await fetch(
-    `http://${backendIPAddress}/courseville/get_course_materials/${cv_cid}`,
-    options
-  )
-    .then((response) => response.json())
-    .catch((error) => console.error(error));
-
+  const data = await fetchGetCourseMaterials(cv_cid);
   console.log(data);
 };
 window.getCourseMaterials = getCourseMaterials;
 
 const getMaterial = async () => {
   const item_id = document.getElementById('itemIdInput').value;
-  const options = {
-    method: 'GET',
-    credentials: 'include',
-  };
-
-  const data = await fetch(
-    `http://${backendIPAddress}/courseville/get_material/${item_id}`,
-    options
-  )
-    .then((response) => response.json())
-    .catch((error) => console.error(error));
-
+  const data = await fetchGetMaterial(item_id);
   console.log(data);
 };
 window.getMaterial = getMaterial;
 
 const getCourseMaterialsLinks = async () => {
   const cv_cid = document.getElementById('courseIdInput2').value;
-  const options = {
-    method: 'GET',
-    credentials: 'include',
-  };
-
-  const data = await fetch(
-    `http://${backendIPAddress}/courseville/get_course_materials_links/${cv_cid}`,
-    options
-  )
-    .then((response) => response.json())
-    .catch((error) => console.error(error));
-
+  const data = await fetchGetCourseMaterialsLinks(cv_cid);
   console.log(data);
 };
 window.getCourseMaterialsLinks = getCourseMaterialsLinks;

@@ -6,8 +6,8 @@
     <title>MyCourseville API Home Pages</title>
     <link rel="stylesheet" href="style.css">
     </link>
-    <script type="module" src="script_cv.js" defer></script>
-    <script type="module" src="script_item.js" defer></script>
+    <script type="module" src="script_mcv.js" defer></script>
+    <script type="module" src="script_db.js" defer></script>
 </head>
 
 <body onload=getUserProfile();getCourses();getCompEngEssCid();>
@@ -43,6 +43,9 @@
                 <button onclick=getCourseMaterialsFromDb()>
                     get course materials from db
                 </button>
+                <button onclick=addCourseMaterialsToDb()>
+                    addCourseMaterialsToDb
+                </button>
             </div>
             <div>
                 <input type="text" placeholder="item id" id="itemIdInput">
@@ -54,12 +57,6 @@
                 <input type="text" placeholder="course id" id="courseIdInput2">
                 <button onclick=getCourseMaterialsLinks()>
                     get materialsLinks
-                </button>
-            </div>
-            <div>
-                <input type="text" placeholder="course id" id="courseIdInput3">
-                <button onclick=addAllAvailableItems()>
-                    add materialsLinks
                 </button>
             </div>
             <div>
