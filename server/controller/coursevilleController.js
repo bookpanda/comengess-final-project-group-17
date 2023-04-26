@@ -3,14 +3,8 @@
 import https from 'node:https';
 import url from 'node:url';
 import querystring from 'querystring';
-import {
-  getCourses,
-  getCourseInfo,
-  getCourseAssignments,
-  getCourseMaterials,
-  getMaterial,
-  getCourseMaterialsLinks,
-} from '../services/courseville/index.js';
+
+import * as CoursevilleService from '../services/courseville/index.js';
 
 const redirect_uri = `http://${process.env.backendIPAddress}/courseville/access_token`;
 const authorization_url = `https://www.mycourseville.com/api/oauth/authorize?response_type=code&client_id=${process.env.client_id}&redirect_uri=${redirect_uri}`;
@@ -118,7 +112,9 @@ export const getProfileInformation = (req, res) => {
 /** @satisfies {import('express').RequestHandler} */
 export const getCourses = async (req, res) => {
   try {
-    const data = await getCourses(req.session.token.access_token);
+    const data = await CoursevilleService.getCourses(
+      req.session.token.access_token
+    );
     res.send(data);
   } catch (error) {
     console.log(error);
@@ -130,7 +126,10 @@ export const getCourses = async (req, res) => {
 export const getCourseInfo = async (req, res) => {
   const cv_cid = req.params.cv_cid;
   try {
-    const data = await getCourseInfo(req.session.token.access_token, cv_cid);
+    const data = await CoursevilleService.getCourseInfo(
+      req.session.token.access_token,
+      cv_cid
+    );
     res.send(data);
   } catch (error) {
     console.log(error);
@@ -142,7 +141,7 @@ export const getCourseInfo = async (req, res) => {
 export const getCourseAssignments = async (req, res) => {
   const cv_cid = req.params.cv_cid;
   try {
-    const data = await getCourseAssignments(
+    const data = await CoursevilleService.getCourseAssignments(
       req.session.token.access_token,
       cv_cid
     );
@@ -157,7 +156,7 @@ export const getCourseAssignments = async (req, res) => {
 export const getCourseMaterials = async (req, res) => {
   const cv_cid = req.params.cv_cid;
   try {
-    const data = await getCourseMaterials(
+    const data = await CoursevilleService.getCourseMaterials(
       req.session.token.access_token,
       cv_cid
     );
@@ -172,7 +171,10 @@ export const getCourseMaterials = async (req, res) => {
 export const getMaterial = async (req, res) => {
   const item_id = req.params.item_id;
   try {
-    const data = await getMaterial(req.session.token.access_token, item_id);
+    const data = await CoursevilleService.getMaterial(
+      req.session.token.access_token,
+      item_id
+    );
     res.send(data);
   } catch (error) {
     console.log(error);
@@ -184,7 +186,7 @@ export const getMaterial = async (req, res) => {
 export const getCourseMaterialsLinks = async (req, res) => {
   const cv_cid = req.params.cv_cid;
   try {
-    const data = await getCourseMaterialsLinks(
+    const data = await CoursevilleService.getCourseMaterialsLinks(
       req.session.token.access_token,
       cv_cid
     );

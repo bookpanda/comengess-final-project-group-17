@@ -5,14 +5,7 @@ import path from 'node:path';
 
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 
-import {
-  getItems,
-  getCourseItems,
-  addItem,
-  deleteItem,
-  addAllAvailableItems,
-  getSelectedItems,
-} from '../services/items/index.js';
+import * as ItemsService from '../services/items/index.js';
 
 const docClient = new DynamoDBClient({
   regions: process.env.AWS_REGION,
@@ -21,7 +14,7 @@ const docClient = new DynamoDBClient({
 /** @satisfies {import('express').RequestHandler} */
 export const getItems = async (req, res) => {
   try {
-    const data = await getItems(docClient);
+    const data = await ItemsService.getItems(docClient);
     res.send(data.Items);
   } catch (err) {
     console.error(err);
@@ -33,7 +26,7 @@ export const getItems = async (req, res) => {
 export const getCourseItems = async (req, res) => {
   const cv_cid = req.params.cv_cid;
   try {
-    const data = await getCourseItems(docClient, cv_cid);
+    const data = await ItemsService.getCourseItems(docClient, cv_cid);
     res.send(data);
   } catch (err) {
     console.error(err);
@@ -44,7 +37,7 @@ export const getCourseItems = async (req, res) => {
 /** @satisfies {import('express').RequestHandler} */
 export const addItem = async (req, res) => {
   try {
-    const data = await addItem(docClient, req.body);
+    const data = await ItemsService.addItem(docClient, req.body);
     res.send(data);
   } catch (err) {
     console.error(err);
@@ -55,7 +48,7 @@ export const addItem = async (req, res) => {
 /** @satisfies {import('express').RequestHandler} */
 export const deleteItem = async (req, res) => {
   try {
-    const data = await deleteItem(docClient, req.params.item_id);
+    const data = await ItemsService.deleteItem(docClient, req.params.item_id);
     res.send(data);
   } catch (err) {
     console.error(err);
@@ -67,7 +60,7 @@ export const deleteItem = async (req, res) => {
 /** @satisfies {import('express').RequestHandler} */
 export const addAllAvailableItems = async (req, res) => {
   try {
-    const data = await addAllAvailableItems(
+    const data = await ItemsService.addAllAvailableItems(
       docClient,
       req.session.token.access_token,
       req.params.cv_cid
@@ -82,7 +75,7 @@ export const addAllAvailableItems = async (req, res) => {
 /** @satisfies {import('express').RequestHandler} */
 export const getSelectedItems = async (req, res) => {
   try {
-    const filepaths = await getSelectedItems(
+    const filepaths = await ItemsService.getSelectedItems(
       docClient,
       req.session.token.access_token,
       req.body

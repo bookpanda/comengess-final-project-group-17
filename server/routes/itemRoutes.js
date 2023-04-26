@@ -1,6 +1,7 @@
 // @ts-check
 
 import { Router } from 'express';
+
 import {
   getItems,
   getCourseItems,
