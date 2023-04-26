@@ -20,6 +20,7 @@ jspm_packages/
 *.tgz
 
 # Random crap
+server/spawn/*
 trash
 .DS_Store
 .sass-cache

@@ -1,4 +1,4 @@
-import { backendIPAddress, getOption } from '../../utils/contants.js';
+import { backendIPAddress, getOption } from '../../utils/constants.js';
 
 export const dbAddCourseMaterials = async (cv_cid) => {
   const options = {

@@ -119,6 +119,10 @@ section {
   color: white;
 }
 
+.main-table img {
+  width: 10%;
+}
+
 #delete-button{
   border-radius: 8px;
   padding: 5px 10px;

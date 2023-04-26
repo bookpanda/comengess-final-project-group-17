@@ -4,8 +4,9 @@ import {
   fetchGetCourseMaterials,
   fetchGetMaterial,
   fetchGetCourseMaterialsLinks,
+  fetchGetProfileInfo,
 } from './apis/mcvApi/index.js';
-import { backendIPAddress, getGroupNumber } from './utils/contants.js';
+import { backendIPAddress, getGroupNumber } from './utils/constants.js';
 
 const authorizeApplication = () => {
   window.location.href = `http://${backendIPAddress}/courseville/auth_app`;
@@ -13,48 +14,37 @@ const authorizeApplication = () => {
 window.authorizeApplication = authorizeApplication;
 
 const getUserProfile = async () => {
-  const options = {
-    method: 'GET',
-    credentials: 'include',
-  };
-  await fetch(
-    `http://${backendIPAddress}/courseville/get_profile_info`,
-    options
-  )
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data.user);
-      document.getElementById(
-        'eng-name-info'
-      ).innerHTML = `${data.user.title_en} ${data.user.firstname_en} ${data.user.lastname_en}`;
-      document.getElementById(
-        'thai-name-info'
-      ).innerHTML = `${data.user.title_th} ${data.user.firstname_th} ${data.user.lastname_th}`;
-    })
-    .catch((error) => console.error(error));
+  const data = await fetchGetProfileInfo();
+  console.log(data.user);
+  document.getElementById(
+    'eng-name-info'
+  ).innerHTML = `${data.user.title_en} ${data.user.firstname_en} ${data.user.lastname_en}`;
+  document.getElementById(
+    'thai-name-info'
+  ).innerHTML = `${data.user.title_th} ${data.user.firstname_th} ${data.user.lastname_th}`;
 };
 window.getUserProfile = getUserProfile;
 
-const getCompEngEssCid = async () => {
-  const options = {
-    method: 'GET',
-    credentials: 'include',
-  };
+// const getCompEngEssCid = async () => {
+//   const options = {
+//     method: 'GET',
+//     credentials: 'include',
+//   };
 
-  const data = await fetch(
-    `http://${backendIPAddress}/courseville/get_courses`,
-    options
-  )
-    .then((response) => response.json())
-    .catch((error) => console.error(error));
+//   const data = await fetch(
+//     `http://${backendIPAddress}/courseville/get_courses`,
+//     options
+//   )
+//     .then((response) => response.json())
+//     .catch((error) => console.error(error));
 
-  const cv_cid = data.data.student.find(
-    (std) => std.course_no === '2110221'
-  ).cv_cid;
+//   const cv_cid = data.data.student.find(
+//     (std) => std.course_no === '2110221'
+//   ).cv_cid;
 
-  document.getElementById('ces-cid-value').innerHTML = cv_cid;
-};
-window.getCompEngEssCid = getCompEngEssCid;
+//   document.getElementById('ces-cid-value').innerHTML = cv_cid;
+// };
+// window.getCompEngEssCid = getCompEngEssCid;
 
 const getCourses = async () => {
   const data = await fetchGetCourses();
@@ -94,39 +84,6 @@ const getCourseMaterialsLinks = async () => {
   console.log(data);
 };
 window.getCourseMaterialsLinks = getCourseMaterialsLinks;
-
-const createCompEngEssAssignmentTable = async () => {
-  const table_body = document.getElementById('main-table-body');
-  table_body.innerHTML = '';
-  const cv_cid = document.getElementById('ces-cid-value').innerHTML;
-
-  const options = {
-    method: 'GET',
-    credentials: 'include',
-  };
-
-  const data = await fetch(
-    `http://${backendIPAddress}/courseville/get_course_assignments/${cv_cid}`,
-    options
-  )
-    .then((response) => response.json())
-    .catch((error) => console.error(error));
-
-  const table = document.getElementById('main-table-body');
-
-  data.data.map((ass) => {
-    table.innerHTML += `<tr> 
-      <td>
-        ${ass.itemid}
-      </td> 
-      <td>
-        ${ass.title}
-      </td>
-    </tr>
-    `;
-  });
-};
-window.createCompEngEssAssignmentTable = createCompEngEssAssignmentTable;
 
 const logout = async () => {
   window.location.href = `http://${backendIPAddress}/courseville/logout`;

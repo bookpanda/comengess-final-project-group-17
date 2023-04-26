@@ -8,9 +8,10 @@
     </link>
     <script type="module" src="script_mcv.js" defer></script>
     <script type="module" src="script_db.js" defer></script>
+    <script type="module" src="script_table.js" defer></script>
 </head>
 
-<body onload=getUserProfile();getCourses();getCompEngEssCid();>
+<body onload=getUserProfile();getCourses();>
     <div>
         <section class="section-right">
             <button class="button logout-button" id="logout-button" onclick=logout()>Logout</button>
@@ -31,7 +32,7 @@
                     id="ces-cid-value"></span>.</p>
         </section>
         <section>
-            <select name="subject-select" id="subject-select">
+            <select name="subject-select" id="subject-select" onchange=createMaterialsTable();>
                 Get Course Test
                 <option value="none">-- Please Select --</option>
 
@@ -68,18 +69,18 @@
         </section>
         <section>
             <h2 class="section-title">3. Get Computer Engineering Essential Assignments</h2>
-            <button class="button create-ces-assignment-table" onclick=createCompEngEssAssignmentTable()>Create
-                table</button>
             <table class="main-table">
                 <thead>
                     <tr id="main-table-head">
                         <th>Id</th>
+                        <th></th>
                         <th>Title</th>
                     </tr>
                 </thead>
                 <tbody id="main-table-body">
                     <tr id=0>
                         <td>...</td>
+                        <td></td>
                         <td>...</td>
                     </tr>
                 </tbody>

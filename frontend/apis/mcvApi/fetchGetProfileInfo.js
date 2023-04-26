@@ -1,8 +1,8 @@
 import { backendIPAddress, getOption } from '../../utils/constants.js';
 
-export const fetchGetMaterial = async (item_id) => {
+export const fetchGetProfileInfo = async (cv_cid) => {
   const data = await fetch(
-    `http://${backendIPAddress}/courseville/get_material/${item_id}`,
+    `http://${backendIPAddress}/courseville/get_profile_info`,
     getOption
   )
     .then((response) => response.json())
