@@ -119,7 +119,6 @@ export const getProfileInformation = (req, res) => {
 export const getCourses = async (req, res) => {
   try {
     const data = await getCourses(req.session.token.access_token);
-    console.log(data);
     res.send(data);
   } catch (error) {
     console.log(error);
@@ -132,7 +131,6 @@ export const getCourseInfo = async (req, res) => {
   const cv_cid = req.params.cv_cid;
   try {
     const data = await getCourseInfo(req.session.token.access_token, cv_cid);
-    console.log(data);
     res.send(data);
   } catch (error) {
     console.log(error);
@@ -148,7 +146,6 @@ export const getCourseAssignments = async (req, res) => {
       req.session.token.access_token,
       cv_cid
     );
-    console.log(data);
     res.send(data);
   } catch (error) {
     console.log(error);
@@ -164,7 +161,6 @@ export const getCourseMaterials = async (req, res) => {
       req.session.token.access_token,
       cv_cid
     );
-    console.log(data);
     res.send(data);
   } catch (error) {
     console.log(error);
@@ -177,7 +173,6 @@ export const getMaterial = async (req, res) => {
   const item_id = req.params.item_id;
   try {
     const data = await getMaterial(req.session.token.access_token, item_id);
-    console.log(data);
     res.send(data);
   } catch (error) {
     console.log(error);
@@ -193,7 +188,6 @@ export const getCourseMaterialsLinks = async (req, res) => {
       req.session.token.access_token,
       cv_cid
     );
-    console.log(data);
     res.send(data);
   } catch (error) {
     console.log(error);

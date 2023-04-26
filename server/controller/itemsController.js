@@ -1,11 +1,13 @@
 // @ts-check
 
 import { spawn } from 'node:child_process';
+import path from 'node:path';
 
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 
 import {
   getItems,
+  getCourseItems,
   addItem,
   deleteItem,
   addAllAvailableItems,
@@ -20,8 +22,19 @@ const docClient = new DynamoDBClient({
 export const getItems = async (req, res) => {
   try {
     const data = await getItems(docClient);
-    console.log(data);
     res.send(data.Items);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send(err);
+  }
+};
+
+/** @satisfies {import('express').RequestHandler} */
+export const getCourseItems = async (req, res) => {
+  const cv_cid = req.params.cv_cid;
+  try {
+    const data = await getCourseItems(docClient, cv_cid);
+    res.send(data);
   } catch (err) {
     console.error(err);
     res.status(500).send(err);
@@ -32,7 +45,6 @@ export const getItems = async (req, res) => {
 export const addItem = async (req, res) => {
   try {
     const data = await addItem(docClient, req.body);
-    console.log(data);
     res.send(data);
   } catch (err) {
     console.error(err);
@@ -44,7 +56,6 @@ export const addItem = async (req, res) => {
 export const deleteItem = async (req, res) => {
   try {
     const data = await deleteItem(docClient, req.params.item_id);
-    console.log(data);
     res.send(data);
   } catch (err) {
     console.error(err);
@@ -61,7 +72,6 @@ export const addAllAvailableItems = async (req, res) => {
       req.session.token.access_token,
       req.params.cv_cid
     );
-    console.log(data);
     res.send(data);
   } catch (err) {
     console.error(err);

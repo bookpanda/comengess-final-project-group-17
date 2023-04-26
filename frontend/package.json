@@ -6,7 +6,6 @@
   "description": "",
   "version": "1.0.0",
   "main": "script_cv.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/bookpanda/compengess-2022-2-activity-8-frontend-group-35/issues"
   },
-  "homepage": "https://github.com/bookpanda/compengess-2022-2-activity-8-frontend-group-35#readme"
+  "homepage": "https://github.com/bookpanda/compengess-2022-2-activity-8-frontend-group-35#readme",
+  "devDependencies": {
+    "prettier": "^2.8.8"
+  }
 }
