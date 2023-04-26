@@ -1,18 +1,19 @@
-const express = require("express");
-const cors = require("cors");
-const bodyParser = require("body-parser");
-const session = require("express-session");
-const dotenv = require("dotenv");
-dotenv.config({ path: "./.env" });
+// @ts-check
 
-const AppError = require("./utils/appError");
-const itemsRoutes = require("./routes/itemRoutes");
-const coursevilleRoutes = require("./routes/coursevilleRoutes");
+import express from 'express';
+import cors from 'cors';
+
+import bodyParser from 'body-parser';
+import session from 'express-session';
+
+import { AppError } from './utils/appError.js';
+import itemsRoutes from './routes/itemRoutes.js';
+import coursevilleRoutes from './routes/coursevilleRoutes.js';
 
 const app = express();
 
 const sessionOptions = {
-  secret: "my-secret",
+  secret: 'my-secret',
   resave: true,
   saveUninitialized: true,
   cookie: {
@@ -26,20 +27,20 @@ const corsOptions = {
   credentials: true,
 };
 
-app.use(express.static("static"));
+app.use(express.static('static'));
 app.use(cors(corsOptions));
 app.use(session(sessionOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use("/items", itemsRoutes);
-app.use("/courseville", coursevilleRoutes);
-app.get("/", (req, res) => {
-  res.send("Congratulation. This server is successfully run.");
+app.use('/items', itemsRoutes);
+app.use('/courseville', coursevilleRoutes);
+app.get('/', (req, res) => {
+  res.send('Congratulation. This server is successfully run.');
 });
 
-app.all("*", (req, res, next) => {
+app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
 });
 
-module.exports = app;
+export default app;

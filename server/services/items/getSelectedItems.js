@@ -1,8 +1,13 @@
-const { PutCommand } = require('@aws-sdk/lib-dynamodb');
+// @ts-check
 
-const { getMaterial } = require('../courseville/index');
+import { getMaterial } from '../courseville/index.js';
 
-exports.getSelectedItems = async (client, access_token, body) => {
+/**
+ * @param {import('@aws-sdk/client-dynamodb').DynamoDBClient} client
+ * @param {string} access_token
+ * @param {*} body
+ */
+export async function getSelectedItems(client, access_token, body) {
   console.log(body);
   const filepaths = [];
   for (let i = 0; i < body.length; i++) {
@@ -15,4 +20,4 @@ exports.getSelectedItems = async (client, access_token, body) => {
   }
 
   return filepaths;
-};
+}

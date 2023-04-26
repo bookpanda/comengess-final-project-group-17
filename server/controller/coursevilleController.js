@@ -1,28 +1,24 @@
-const dotenv = require('dotenv');
-dotenv.config();
-const https = require('https');
-const url = require('url');
-const querystring = require('querystring');
-const {
-  getCourses,
-  getCourseInfo,
-  getCourseAssignments,
-  getCourseMaterials,
-  getMaterial,
-  getCourseMaterialsLinks,
-} = require('../services/courseville/index');
+// @ts-check
+
+import https from 'node:https';
+import url from 'node:url';
+import querystring from 'querystring';
+
+import * as CoursevilleService from '../services/courseville/index.js';
 
 const redirect_uri = `http://${process.env.backendIPAddress}/courseville/access_token`;
 const authorization_url = `https://www.mycourseville.com/api/oauth/authorize?response_type=code&client_id=${process.env.client_id}&redirect_uri=${redirect_uri}`;
 const access_token_url = 'https://www.mycourseville.com/api/oauth/access_token';
 
-exports.authApp = (req, res) => {
+/** @satisfies {import('express').RequestHandler} */
+export const authApp = (req, res) => {
   res.redirect(authorization_url);
 };
 
-exports.accessToken = (req, res) => {
+/** @satisfies {import('express').RequestHandler} */
+export const accessToken = (req, res) => {
   const parsedUrl = url.parse(req.url);
-  const parsedQuery = querystring.parse(parsedUrl.query);
+  const parsedQuery = querystring.parse(parsedUrl.query ?? '');
 
   if (parsedQuery.error) {
     res.writeHead(400, { 'Content-Type': 'text/plain' });
@@ -80,7 +76,8 @@ exports.accessToken = (req, res) => {
 };
 
 // Example: Send "GET" request to CV endpoint to get user profile information
-exports.getProfileInformation = (req, res) => {
+/** @satisfies {import('express').RequestHandler} */
+export const getProfileInformation = (req, res) => {
   try {
     const profileOptions = {
       headers: {
@@ -112,9 +109,12 @@ exports.getProfileInformation = (req, res) => {
   }
 };
 
-exports.getCourses = async (req, res) => {
+/** @satisfies {import('express').RequestHandler} */
+export const getCourses = async (req, res) => {
   try {
-    const data = await getCourses(req.session.token.access_token);
+    const data = await CoursevilleService.getCourses(
+      req.session.token.access_token
+    );
     res.send(data);
   } catch (error) {
     console.log(error);
@@ -122,21 +122,11 @@ exports.getCourses = async (req, res) => {
   }
 };
 
-exports.getCourseInfo = async (req, res) => {
+/** @satisfies {import('express').RequestHandler} */
+export const getCourseInfo = async (req, res) => {
   const cv_cid = req.params.cv_cid;
   try {
-    const data = await getCourseInfo(req.session.token.access_token, cv_cid);
-    res.send(data);
-  } catch (error) {
-    console.log(error);
-    console.log('Please logout, then login again.');
-  }
-};
-
-exports.getCourseAssignments = async (req, res) => {
-  const cv_cid = req.params.cv_cid;
-  try {
-    const data = await getCourseAssignments(
+    const data = await CoursevilleService.getCourseInfo(
       req.session.token.access_token,
       cv_cid
     );
@@ -147,10 +137,11 @@ exports.getCourseAssignments = async (req, res) => {
   }
 };
 
-exports.getCourseMaterials = async (req, res) => {
+/** @satisfies {import('express').RequestHandler} */
+export const getCourseAssignments = async (req, res) => {
   const cv_cid = req.params.cv_cid;
   try {
-    const data = await getCourseMaterials(
+    const data = await CoursevilleService.getCourseAssignments(
       req.session.token.access_token,
       cv_cid
     );
@@ -161,10 +152,29 @@ exports.getCourseMaterials = async (req, res) => {
   }
 };
 
-exports.getMaterial = async (req, res) => {
+/** @satisfies {import('express').RequestHandler} */
+export const getCourseMaterials = async (req, res) => {
+  const cv_cid = req.params.cv_cid;
+  try {
+    const data = await CoursevilleService.getCourseMaterials(
+      req.session.token.access_token,
+      cv_cid
+    );
+    res.send(data);
+  } catch (error) {
+    console.log(error);
+    console.log('Please logout, then login again.');
+  }
+};
+
+/** @satisfies {import('express').RequestHandler} */
+export const getMaterial = async (req, res) => {
   const item_id = req.params.item_id;
   try {
-    const data = await getMaterial(req.session.token.access_token, item_id);
+    const data = await CoursevilleService.getMaterial(
+      req.session.token.access_token,
+      item_id
+    );
     res.send(data);
   } catch (error) {
     console.log(error);
@@ -172,10 +182,11 @@ exports.getMaterial = async (req, res) => {
   }
 };
 
-exports.getCourseMaterialsLinks = async (req, res) => {
+/** @satisfies {import('express').RequestHandler} */
+export const getCourseMaterialsLinks = async (req, res) => {
   const cv_cid = req.params.cv_cid;
   try {
-    const data = await getCourseMaterialsLinks(
+    const data = await CoursevilleService.getCourseMaterialsLinks(
       req.session.token.access_token,
       cv_cid
     );
@@ -186,7 +197,8 @@ exports.getCourseMaterialsLinks = async (req, res) => {
   }
 };
 
-exports.logout = (req, res) => {
+/** @satisfies {import('express').RequestHandler} */
+export const logout = (req, res) => {
   req.session.destroy();
   res.redirect(`http://${process.env.frontendIPAddress}/login.html`);
   res.end();

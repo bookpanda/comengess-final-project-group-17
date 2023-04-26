@@ -1,12 +1,8 @@
-const { getItems } = require('./getItems');
-const { getCourseItems } = require('./getCourseItems');
-const { addItem } = require('./addItem');
-const { deleteItem } = require('./deleteItem');
-const { addAllAvailableItems } = require('./addAllAvailableItems');
-const { getSelectedItems } = require('./getSelectedItems');
-exports.getItems = getItems;
-exports.getCourseItems = getCourseItems;
-exports.addItem = addItem;
-exports.deleteItem = deleteItem;
-exports.addAllAvailableItems = addAllAvailableItems;
-exports.getSelectedItems = getSelectedItems;
+// @ts-check
+
+export { getItems } from './getItems.js';
+export { getCourseItems } from './getCourseItems.js';
+export { addItem } from './addItem.js';
+export { deleteItem } from './deleteItem.js';
+export { addAllAvailableItems } from './addAllAvailableItems.js';
+export { getSelectedItems } from './getSelectedItems.js';

@@ -1,36 +1,20 @@
 // @ts-check
 
-const dotenv = require('dotenv');
-const path = require('path');
-const mime = require('mime');
-const { spawn } = require('child_process');
-const fs = require('fs');
+import { spawn } from 'node:child_process';
+import path from 'node:path';
 
-dotenv.config();
-const { DynamoDBClient } = require('@aws-sdk/client-dynamodb');
-const {
-  PutCommand,
-  DeleteCommand,
-  ScanCommand,
-} = require('@aws-sdk/lib-dynamodb');
+import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 
-const {
-  getItems,
-  getCourseItems,
-  addItem,
-  deleteItem,
-  addAllAvailableItems,
-  getSelectedItems,
-} = require('../services/items/index');
+import * as ItemsService from '../services/items/index.js';
 
-// @ts-ignore
 const docClient = new DynamoDBClient({
   regions: process.env.AWS_REGION,
 });
 
-exports.getItems = async (req, res) => {
+/** @satisfies {import('express').RequestHandler} */
+export const getItems = async (req, res) => {
   try {
-    const data = await getItems(docClient);
+    const data = await ItemsService.getItems(docClient);
     res.send(data.Items);
   } catch (err) {
     console.error(err);
@@ -38,10 +22,11 @@ exports.getItems = async (req, res) => {
   }
 };
 
-exports.getCourseItems = async (req, res) => {
+/** @satisfies {import('express').RequestHandler} */
+export const getCourseItems = async (req, res) => {
   const cv_cid = req.params.cv_cid;
   try {
-    const data = await getCourseItems(docClient, cv_cid);
+    const data = await ItemsService.getCourseItems(docClient, cv_cid);
     res.send(data);
   } catch (err) {
     console.error(err);
@@ -49,9 +34,10 @@ exports.getCourseItems = async (req, res) => {
   }
 };
 
-exports.addItem = async (req, res) => {
+/** @satisfies {import('express').RequestHandler} */
+export const addItem = async (req, res) => {
   try {
-    const data = await addItem(docClient, req.body);
+    const data = await ItemsService.addItem(docClient, req.body);
     res.send(data);
   } catch (err) {
     console.error(err);
@@ -59,9 +45,10 @@ exports.addItem = async (req, res) => {
   }
 };
 
-exports.deleteItem = async (req, res) => {
+/** @satisfies {import('express').RequestHandler} */
+export const deleteItem = async (req, res) => {
   try {
-    const data = await deleteItem(docClient, req.params.item_id);
+    const data = await ItemsService.deleteItem(docClient, req.params.item_id);
     res.send(data);
   } catch (err) {
     console.error(err);
@@ -69,10 +56,11 @@ exports.deleteItem = async (req, res) => {
   }
 };
 
-//get all things from course id
-exports.addAllAvailableItems = async (req, res) => {
+// get all things from course id
+/** @satisfies {import('express').RequestHandler} */
+export const addAllAvailableItems = async (req, res) => {
   try {
-    const data = await addAllAvailableItems(
+    const data = await ItemsService.addAllAvailableItems(
       docClient,
       req.session.token.access_token,
       req.params.cv_cid
@@ -84,9 +72,10 @@ exports.addAllAvailableItems = async (req, res) => {
   }
 };
 
-exports.getSelectedItems = async (req, res) => {
+/** @satisfies {import('express').RequestHandler} */
+export const getSelectedItems = async (req, res) => {
   try {
-    const filepaths = await getSelectedItems(
+    const filepaths = await ItemsService.getSelectedItems(
       docClient,
       req.session.token.access_token,
       req.body

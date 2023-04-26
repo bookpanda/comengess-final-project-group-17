@@ -1,9 +1,18 @@
-const { PutCommand } = require('@aws-sdk/lib-dynamodb');
+// @ts-check
 
-const { getCourseMaterialsLinks } = require('../courseville/index');
+import { PutCommand } from '@aws-sdk/lib-dynamodb';
+
+import { getCourseMaterialsLinks } from '../courseville/index.js';
 
 // course_id item_id filepath name thumbnail
-exports.addAllAvailableItems = async (client, access_token, cv_cid) => {
+/**
+ *
+ * @param {import('@aws-sdk/client-dynamodb').DynamoDBClient} client
+ * @param {string} access_token
+ * @param {string} cv_cid
+ * @returns
+ */
+export async function addAllAvailableItems(client, access_token, cv_cid) {
   const cvData = await getCourseMaterialsLinks(access_token, cv_cid);
   console.log(cvData);
   for (let i = 0; i < cvData.length; i++) {
@@ -23,5 +32,6 @@ exports.addAllAvailableItems = async (client, access_token, cv_cid) => {
     };
     await client.send(new PutCommand(params));
   }
+
   return cvData;
-};
+}
