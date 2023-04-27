@@ -18,10 +18,10 @@ const getUserProfile = async () => {
   console.log(data.user);
   document.getElementById(
     'eng-name-info'
-  ).innerHTML = `${data.user.title_en} ${data.user.firstname_en} ${data.user.lastname_en}`;
+  ).innerHTML = `${data.user.firstname_en} ${data.user.lastname_en}`;
   document.getElementById(
     'thai-name-info'
-  ).innerHTML = `${data.user.title_th} ${data.user.firstname_th} ${data.user.lastname_th}`;
+  ).innerHTML = `${data.user.firstname_th} ${data.user.lastname_th}`;
 };
 window.getUserProfile = getUserProfile;
 
