@@ -58,7 +58,7 @@ window.getCourses = getCourses;
 const getCourseInfo = async (cv_cid) => {
   const data = await fetchGetCourseInfo(cv_cid);
   const select = document.getElementById('subject-select');
-  select.innerHTML += `<option value="${cv_cid}">${data.data.title}</option>`;
+  select.innerHTML += `<option value="${cv_cid}" id="table">${data.data.title}</option>`;
 
   console.log(data);
 };
