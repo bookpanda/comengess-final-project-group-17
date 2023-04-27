@@ -8,4 +8,4 @@ export const dbGetCourseMaterials = async (cv_cid) => {
     .then((response) => response.json())
     .catch((error) => console.error(error));
   return data;
-};
+}; 
