@@ -1,33 +1,45 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>MyCourseville API Login Page</title>
-    <link rel="stylesheet" href="style.css">
-    </link>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <script type="module" src="script_mcv.js" defer></script>
+    <link rel="stylesheet" href="style.css"/>
+    
 </head>
-
 <body>
-    <section>
-        <header>
-            <h1 id="app-name">MyCourseville API Login Page Group <span id="group-id"></span></h1>
-        </header>
-    </section>
-    <section>
-        <header>
-            <h2 class="section-title description">Please press the login button to proceed to MyCourseville API Home
-                Page</h2>
-            <p class="section-subtitle description">(You need to login with MyCourseville Platform account.)</p>
-        </header>
-    </section>
-    <section class="section-center">
-        <button class="button login-button" id="login-button" onclick=authorizeApplication()>Login</button>
-    </section>
-    <section class="section-credit">
-        &#169; 2110221 Computer Engineering Essentials (2022/2) &#169;
-    </section>
+    <div class = "nav-container">
+        <div class = "wrapper">
+            <nav>
+                <img id = "mcv-logo" src="./image/sub-logo@2x 1.svg" alt="">
+            </nav>
+        </div>
+    </div>
+    <div class="header-container">
+        <div class="wrapper">
+            <header>
+                <div class="non-image-content">
+                    <h1>Let’s download<br>
+                        your <span>materials.</span> 
+                    </h1>
+                    <p>
+                        We have every material files from your<br> 
+                        MyCourseVille Login and download them.
+                    </p>
+                    <button onclick=authorizeApplication()>Login</button>
+                </div>
+                <div class="image-content">
+                    <img src="./image/fileicon.svg" alt="">
+                </div>
+            </header>
+            <div class="credit-container">
+                <p>
+                    &#169; 2110221 Computer Engineering Essentials (2022/2) &#169;
+                </p>
+            </div>
+        </div>
+    </div>
 </body>
-
 </html>

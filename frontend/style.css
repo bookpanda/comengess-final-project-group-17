@@ -1,139 +1,127 @@
-@import url("https://fonts.googleapis.com/css2?family=Mitr:wght@200;400;600&display=swap");
+@import url('https://fonts.cdnfonts.com/css/andika-new-basic');
 
-:root {
-  --standard-border-radius: 8px;
-}
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
-body {
-  font-family: "Mitr", sans-serif;
-}
-
-#app-name {
-  font-size: 2.2em;
-  font-weight: bold;
-  margin: 0;
-  text-align: center;
+* {
+    box-sizing: border-box;
+    margin: 0;
 }
 
-section {
-  margin: 20px 0;
-}
-.section-title {
-  font-size: 1.25em;
-  font-weight: bold;
-  margin: 10px 0;
-}
-.section-subtitle {
-  font-size: 1.1em;
-}
-.section-center {
-  text-align: center;
-}
-.section-credit {
-  text-align: center;
-  font-size: 1.1em;
-}
-.section-right {
-  text-align: right;
-}
-.section-left {
-  text-align: left;
+.nav-container {
+    height: 80px;
+    background: #fffffa;
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.1);
 }
 
-.description {
-  text-align: center;
-  color: rgb(0, 2, 107);
+.wrapper {
+    width: 100%;
+    margin: 0 auto;
 }
 
-.info {
-  font-size: 1em;
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    padding-left: 180px;
 }
 
-.button {
-  border-radius: 8px;
-  padding: 5px 5px;
-  border: 1px solid #aaa;
-  background: white;
-  cursor: pointer;
-  font-family: "Mitr", sans-serif;
-  font-size: 1em;
-  text-align: center;
-  width: fit-content;
-}
-.button:hover {
-  background: rgb(255, 200, 105);
-  color: white;
-}
-.logout-button:hover {
-  background: rgb(204, 19, 19);
-  color: white;
-}
-.change-page-button:hover {
-  background: rgb(94, 127, 236);
-  color: white;
+#mcv-logo {
+    width: 185px;
+    height: 37px;
+    left: 118px;
+    top: 22px;
 }
 
-.main-table {
-  margin: 10px 0;
-  padding: 0;
-  width: 100%;
-  background: #eee;
-  border-radius: 8px;
-  box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.1);
-  border-collapse: collapse;
-  overflow: hidden;
-}
-.main-table > thead {
-  background: #555;
-  color: white;
-}
-.main-table > thead > tr > th {
-  text-align: left;
-}
-.main-table td,
-.main-table th {
-  padding: 5px 10px;
-  font-size: 1em;
-}
-.main-table input,
-.main-table select,
-#name-to-add-2{
-  padding: 5px 10px;
-  border-radius: 8px;
-  border: 1px solid #aaa;
-  font-family: "Mitr", sans-serif;
-  font-size: 1em;
-}
-.main-table button {
-  border-radius: 8px;
-  padding: 5px 10px;
-  border: 1px solid #aaa;
-  background: white;
-  width: 60px;
-  cursor: pointer;
-  font-family: "Mitr", sans-serif;
-  font-size: 1em;
-}
-.main-table button:hover {
-  background: rgb(255, 200, 105);
-  color: white;
+.header-container {
+    height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
 }
 
-.main-table img {
-  width: 10%;
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-#delete-button{
-  border-radius: 8px;
-  padding: 5px 10px;
-  border: 1px solid #aaa;
-  background: white;
-  width: 60px;
-  cursor: pointer;
-  font-family: "Mitr", sans-serif;
-  font-size: 1em;
+header h1 {
+    font-family: 'Andika New Basic';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 65px;
+    line-height: 60px;
+    color: #000000;
+    margin-bottom: 40px;
 }
-#delete-button:hover {
-  background: rgb(255, 200, 105);
-  color: white;
+
+header p {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 34px;
+    color: #5B5858;
+    margin-bottom: 40px;
 }
+
+header button {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 33px;
+    color: #ffffff;
+
+    width: 200.48px;
+    height: 75.87px;
+    background: linear-gradient(90deg, #F17575 0%, #FCBA47 104.29%);
+    border-radius: 50px;
+    border: #fffffa;
+
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 0 10px(0, 0, 0, 0.1);
+    -webkit-transition-duration: 0.3s ;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow, transform;
+    transition-property: box-shadow, transform;
+}
+
+header button:hover, header button:focus, header button:active{
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+
+
+header .image-content {
+    position: relative;
+}
+span {
+    font-family: 'Andika New Basic';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 65px;
+    line-height: 100px;
+    color: #C08504;
+    margin-bottom: 40px;
+
+}
+
+.credit-container {
+    display: flex;
+    align-items: center;
+    
+    justify-content: center;
+    margin-top: 100px;
+    
+}
+.non-image-content {
+    margin-right: 250px;
+}
+
+
+
