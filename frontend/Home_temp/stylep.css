@@ -8,7 +8,6 @@
 }
 
 .nav-container {
-    display: flex;
     height: 80px;
     background: #fffffa;
     box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.1);
@@ -36,6 +35,8 @@ button:hover {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
+    cursor: pointer;
+    text-decoration: none;
 }
 
 #logout-button {
@@ -70,8 +71,8 @@ button:hover {
 }
 
 .select-container {
-    margin-top: 40px;
-    margin-bottom: 20px;
+    margin-top: 80px;
+    margin-bottom: 50px;
     margin-left: 50%;
     display: flex;
 }
@@ -79,9 +80,6 @@ button:hover {
 .select-container select {
     position: absolute;
     transform: translate(-50%, -50%);
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
     width: 70%;
     height: 30px;
     font-family: 'Inter';
@@ -105,8 +103,33 @@ button:hover {
 .button {
     position: flex;
     text-align: center;
+
 }
 
-.command {
-    margin: 5px;
+#command1 {
+    margin-right: 50px;
+    width: 15%;
+    height: 35px;
+    border-radius: 50px;
+    border: none;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 75%;
+    background: linear-gradient(90deg, #F17575 0%, #FCBA47 104.29%);
+    color: #ffffff;
+}
+
+#command2 {
+    margin-left: 50px;
+    width: 15%;
+    height: 35px;
+    border-radius: 50px;
+    border: none;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 75%;
+    background: linear-gradient(90deg, #F17575 0%, #FCBA47 104.29%);
+    color: #ffffff;
 }
