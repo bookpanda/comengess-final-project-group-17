@@ -32,6 +32,12 @@ nav {
     height: 37px;
 }
 
+button:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
 #logout-button {
     margin: 30px;
     width: 100.48px;
@@ -45,6 +51,8 @@ nav {
     background: linear-gradient(90deg, #F17575 0%, #FCBA47 104.29%);
     border-radius: 50px;
     border: #fffffa;
+    cursor: pointer;
+    text-decoration: none;
 
 }
 
@@ -61,15 +69,37 @@ nav {
 
 }
 
-
-#subject-select {
-    margin-top: 3%;
-    margin-bottom: 2%;
-    margin-left: auto;
-    margin-right: auto;
+.select-container {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    margin-left: 50%;
     display: flex;
-    width: 80%;
+}
+
+.select-container select {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 70%;
     height: 30px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-size: 13px;
+    background-color: rgb(61, 61, 61);
+    color: #fffffa;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+    border: 6px solid rgb(61, 61, 61);
+    border-radius: 5px;
+    outline: none;
+
+}
+
+.select-container select:hover {
+    background-color: #000000;
+    cursor: pointer;
+    text-decoration: none;
 }
 
 .button {
@@ -78,5 +108,5 @@ nav {
 }
 
 .command {
-    margin: 3%;
+    margin: 5px;
 }
