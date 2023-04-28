@@ -23,7 +23,7 @@ nav {
     align-items: center;
     justify-content: space-between;
     height: 80px;
-    padding-left: 180px;
+    padding-left: 150px;
 }
 
 #mcv-logo {
@@ -52,9 +52,9 @@ header h1 {
     font-style: normal;
     font-weight: 700;
     font-size: 65px;
-    line-height: 60px;
+    line-height: 40px;
     color: #000000;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 header p {
@@ -99,6 +99,10 @@ header button:hover, header button:focus, header button:active{
 
 header .image-content {
     position: relative;
+    width: 50vw;
+    display: flex;
+    margin-top: 7vh;
+    justify-content: center;
 }
 span {
     font-family: 'Andika New Basic';
@@ -116,11 +120,21 @@ span {
     align-items: center;
     
     justify-content: center;
-    margin-top: 100px;
+    margin-top: 80px;
     
 }
 .non-image-content {
-    margin-right: 250px;
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 2vh;
+    padding-left: 10vw;
+}
+
+#file-icon {
+    max-width: 75%;
+    max-height: 75%;
 }
 
 
