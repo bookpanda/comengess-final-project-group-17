@@ -51,17 +51,17 @@ header h1 {
     font-family: 'Andika New Basic';
     font-style: normal;
     font-weight: 700;
-    font-size: 65px;
+    font-size: 75px;
     line-height: 40px;
     color: #000000;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
 }
 
 header p {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 34px;
     color: #5B5858;
     margin-bottom: 40px;
@@ -108,7 +108,7 @@ span {
     font-family: 'Andika New Basic';
     font-style: normal;
     font-weight: 700;
-    font-size: 65px;
+    font-size: 75px;
     line-height: 100px;
     color: #C08504;
     margin-bottom: 40px;
@@ -120,7 +120,7 @@ span {
     align-items: center;
     
     justify-content: center;
-    margin-top: 80px;
+    margin-top: 50px;
     
 }
 .non-image-content {
@@ -133,8 +133,9 @@ span {
 }
 
 #file-icon {
-    max-width: 75%;
-    max-height: 75%;
+    max-width: 76%;
+    max-height: 76%;
+    filter: drop-shadow(0px 8px 12px rgba(73, 10, 10, 0.25));
 }
 
 
