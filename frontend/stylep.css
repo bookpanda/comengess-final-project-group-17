@@ -11,14 +11,14 @@ nav span {
     display: inline-flex;
     width: 100px;
     height: 55px;
-    margin: 0 15px;
     perspective: 1000px;
-    cursor: pointer;
-    text-decoration: none;
-
 }
 
+
 a {
+    align-items: center;
+    justify-content: center;
+    display: inline-flex;
     font-size: 15px;
     letter-spacing: 1px;
     transform-style: preserve-3d;
@@ -58,7 +58,6 @@ a:hover {
 }
 
 
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -95,6 +94,14 @@ button:hover {
     text-decoration: none;
 }
 
+#logout-button {
+    align-items: center;
+    justify-content: center;
+    display: inline-flex;
+    cursor: pointer;
+    text-decoration: none;
+}
+
 .info {
     margin-left: 40%;
     font-family: 'Inter';
@@ -115,14 +122,12 @@ button:hover {
 .select-container {
     margin-top: 80px;
     margin-bottom: 50px;
-    margin-left: 50%;
+    padding: 0 10%;
     display: flex;
 }
 
 .select-container select {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    width: 70%;
+    width: 100%;
     height: 30px;
     font-family: 'Inter';
     font-style: normal;
@@ -235,6 +240,6 @@ tr :last-child {
 }
 
 .material-icon {
-    height: 10%;
-    width: 10%;
+    height: 30%;
+    width: 30%;
 }
