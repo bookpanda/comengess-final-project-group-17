@@ -172,7 +172,6 @@ button:hover {
     display: flex;
     text-align: center;
     color: #000000;
-    text-shadow: 2px 2px 5px red;
     line-height: 15px;
     word-spacing: 5px;
 
