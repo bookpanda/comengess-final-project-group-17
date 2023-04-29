@@ -10,7 +10,7 @@
 .nav-container {
     height: 80px;
     background: #fffffa;
-    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.5);
 }
 
 .wrapper {
@@ -22,7 +22,7 @@ nav {
     display: flex;
     align-items: center;
     height: 80px;
-    padding-left: 15%;
+    padding-left: 10%;
     justify-content: space-between;
 }
 
@@ -32,7 +32,7 @@ nav {
 }
 
 button:hover {
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 20px rgba(255, 182, 65, 0.5);
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
     cursor: pointer;
@@ -40,6 +40,9 @@ button:hover {
 }
 
 #logout-button {
+    align-items: center;
+    justify-content: center;
+    display: inline-flex;
     margin: 30px;
     width: 100.48px;
     min-width: 7.5%;
@@ -47,14 +50,12 @@ button:hover {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
-    font-size: 16px;
     color: #ffffff;
     background: linear-gradient(90deg, #F17575 0%, #FCBA47 104.29%);
     border-radius: 50px;
     border: #fffffa;
     cursor: pointer;
     text-decoration: none;
-
 }
 
 .info {
@@ -62,11 +63,15 @@ button:hover {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 300;
-    font-size: 18px;
+    font-size: small;
     line-height: 40px;
     display: flex;
     text-align: center;
     color: #000000;
+    text-shadow: 2px 2px 5px red;
+    line-height: 15px;
+    word-spacing: 5px;
+
 
 }
 
@@ -87,10 +92,11 @@ button:hover {
     font-size: 13px;
     background-color: rgb(61, 61, 61);
     color: #fffffa;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 5px 25px rgba(75, 150, 255, 0.7);
     border: 6px solid rgb(61, 61, 61);
     border-radius: 5px;
     outline: none;
+    text-overflow: ellipsis;
 
 }
 
@@ -101,7 +107,6 @@ button:hover {
 }
 
 .button {
-    position: flex;
     text-align: center;
 
 }
@@ -109,7 +114,7 @@ button:hover {
 #command1 {
     margin-right: 50px;
     width: 15%;
-    height: 35px;
+    height: 40px;
     border-radius: 50px;
     border: none;
     font-family: 'Inter';
@@ -123,7 +128,7 @@ button:hover {
 #command2 {
     margin-left: 50px;
     width: 15%;
-    height: 35px;
+    height: 40px;
     border-radius: 50px;
     border: none;
     font-family: 'Inter';

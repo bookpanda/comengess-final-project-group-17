@@ -92,9 +92,11 @@ header button {
 header button:hover,
 header button:focus,
 header button:active {
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 20px rgba(255, 182, 65, 0.5);
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
+    cursor: pointer;
+    text-decoration: none;
 }
 
 
