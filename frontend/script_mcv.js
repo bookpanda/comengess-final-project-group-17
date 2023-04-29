@@ -18,7 +18,7 @@ const getUserProfile = async () => {
   console.log(data.user);
   document.getElementById(
     'eng-name-info'
-  ).innerHTML = `${data.user.firstname_en} ${data.user.lastname_en}`;
+  ).innerHTML = `${data.user.firstname_en}`;
   document.getElementById(
     'thai-name-info'
   ).innerHTML = `${data.user.firstname_th} ${data.user.lastname_th}`;
