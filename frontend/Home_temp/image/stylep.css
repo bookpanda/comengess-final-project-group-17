@@ -1,0 +1,162 @@
+@import url('https://fonts.cdnfonts.com/css/andika-new-basic');
+
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.nav-container {
+    display: flex;
+    height: 80px;
+    background: #fffffa;
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.wrapper {
+    width: 100%;
+    margin: 0 auto;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    height: 80px;
+    padding-left: 15%;
+    justify-content: space-between;
+}
+
+#mcv-logo {
+    width: 185px;
+    height: 37px;
+}
+
+button:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+#logout-button {
+    margin: 30px;
+    width: 100.48px;
+    min-width: 7.5%;
+    height: 42.87px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    color: #ffffff;
+    background: linear-gradient(90deg, #F17575 0%, #FCBA47 104.29%);
+    border-radius: 50px;
+    border: #fffffa;
+    cursor: pointer;
+    text-decoration: none;
+
+}
+
+.info {
+    margin-left: 40%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 40px;
+    display: flex;
+    text-align: center;
+    color: #000000;
+
+}
+
+.select-container {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    margin-left: 50%;
+    display: flex;
+}
+
+.select-container select {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 70%;
+    height: 30px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-size: 13px;
+    background-color: rgb(61, 61, 61);
+    color: #fffffa;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+    border: 6px solid rgb(61, 61, 61);
+    border-radius: 5px;
+    outline: none;
+
+}
+
+.select-container select:hover {
+    background-color: #000000;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.button {
+    position: flex;
+    text-align: center;
+}
+
+.command {
+    margin: 5px;
+}
+
+
+
+.table-container {  
+    display: flex;
+}
+
+.table-title {
+  padding-left: 15%;
+}
+
+#main-table {
+    margin: auto;
+  width: 70%;
+  background: #EEE;
+  border-radius: 10px;
+  border-collapse: collapse;
+  overflow: hidden;
+  font-size: 14px
+  
+}
+
+tr {
+    border-bottom: 20px solid white;
+   
+}
+tr :last-child {
+    border-bottom: none;
+}
+
+#main-table>thead {
+    background-color: #95A5A6;
+  color: black;
+}
+
+#main-table>thead>tr>th {
+  font-weight: bold;
+  text-align: center;
+}
+
+#main-table>tbody>tr {
+    background: #F1F1F1;
+}
+
+#main-table td,
+#main-table th {
+  padding: 25px 10px;
+  font-weight: lighter;
+    text-align: center;
+}
