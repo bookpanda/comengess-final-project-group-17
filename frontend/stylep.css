@@ -16,7 +16,7 @@
 .nav-container {
     height: 80px;
     background: #fffffa;
-    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.2);
 }
 
 .wrapper {
@@ -147,9 +147,8 @@ nav {
 }
 
 button:hover {
-    box-shadow: 0 0 20px rgba(255, 182, 65, 0.5);
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
+    -webkit-transform: scale(1);
+    transform: scale(1);
     cursor: pointer;
     text-decoration: none;
 }
@@ -174,36 +173,51 @@ button:hover {
     color: #000000;
     line-height: 15px;
     word-spacing: 5px;
-
-
 }
 
 .select-container {
     margin-top: 80px;
-    margin-bottom: 50px;
+    margin-bottom: 2%;
     padding: 0 10%;
-    display: flex;
+    padding-bottom: 1%;
+}
+
+.section-title {
+    margin-bottom: 1%;
+    font-family: 'Andika New Basic';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
 }
 
 .select-container select {
+    padding-left: 2%;
     width: 100%;
     height: 50px;
     font-family: 'Inter';
     font-style: normal;
-    font-size: 20px;
-    background-color: rgb(61, 61, 61);
-    color: #fffffa;
-    border: 6px solid rgb(61, 61, 61);
+    font-size: 15px;
+    background-color: white;
+    color: #AAA7A7;
+    border: 2px solid #AAA7A7;
     border-radius: 5px;
     outline: none;
     text-overflow: ellipsis;
-
 }
 
+select::marker {
+    background-color: black;
+}
+
+
 .select-container select:hover {
-    background-color: #000000;
+    border-color: #018ADA;
     cursor: pointer;
     text-decoration: none;
+}
+
+.button-selec {
+    margin-bottom: 3%;
 }
 
 .button {
@@ -211,7 +225,7 @@ button:hover {
 
 }
 
-#command {
+#command1 {
     margin-right: 50px;
     width: 15%;
     height: 40px;
@@ -221,13 +235,34 @@ button:hover {
     font-style: large;
     font-weight: 700;
     font-size: 75%;
-    background: linear-gradient(90deg, #F17575 0%, #FCBA47 104.29%);
+    background: #135C85;
     color: #ffffff;
 }
 
-#command:hover {
-    background: #F17575;
-    transition: 400ms;
+#command2 {
+    margin-right: 50px;
+    width: 15%;
+    height: 40px;
+    border-radius: 50px;
+    border: none;
+    font-family: 'Inter';
+    font-style: large;
+    font-weight: 700;
+    font-size: 75%;
+    background: #A56B06;
+    color: #ffffff;
+}
+
+#command1:hover {
+    
+    background: #0484CF;
+    
+}
+
+#command2:hover {
+    
+    background: #F59C02;
+    
 }
 
 .table-container {
@@ -239,7 +274,6 @@ button:hover {
 .table-title {
     padding-left: 10%;
     padding-top: 3%;
-    padding-bottom: 3%;
 }
 
 #main-table {

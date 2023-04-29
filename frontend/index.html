@@ -24,16 +24,17 @@
 
     <div class="container">
         <div class="select-container">
+            <h2 class = "section-title">Choose course</h2>
             <select name="subject-select" id="subject-select" onchange=createMaterialsTable();>
-                <option value="none" id="start-choice" class="all-select"> -- Please Select -- </option>
+                <option value="none" id="start-choice" class="all-select">Choose course</option>
             </select>
         </div>
         <div class="button-selec">
             <div class="button">
-                <button id="command" class="bt" onclick=addCourseMaterialsToDb()>
+                <button id="command1" class="bt" onclick=addCourseMaterialsToDb()>
                     Add Course
                 </button>
-                <button id="command" class="bt" onclick=downloadSelectedItems()>
+                <button id="command2" class="bt" onclick=downloadSelectedItems()>
                     Download ZIP
                 </button>
             </div>
@@ -41,7 +42,7 @@
 
         <div class="table-section">
             <div class="table-title">
-                <h2 class="section-title">MATERIALS LIST</h2>
+                <h2 class="section-title">Material list</h2>
             </div>
             <div class="table-container">
                 <table id="main-table">
