@@ -2,6 +2,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Prompt&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -137,4 +139,67 @@ button:hover {
     font-size: 75%;
     background: linear-gradient(90deg, #F17575 0%, #FCBA47 104.29%);
     color: #ffffff;
+}
+
+
+.table-container {
+    display: flex;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.table-title {
+    padding-left: 10%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+#main-table {
+    margin: auto;
+    width: 100%;
+    background: #EEE;
+    border-radius: 10px;
+    border-collapse: collapse;
+    overflow: hidden;
+    font-size: 14px;
+    font-family: Poppins, Prompt, sans-serif;
+    font-weight: 700;
+
+}
+
+tr {
+    border-bottom: 20px solid white;
+}
+
+tr :last-child {
+    border-bottom: none;
+}
+
+#main-table>thead {
+    background-color: #F0CC95;
+    color: black;
+    font-size: 20px;
+
+}
+
+#main-table>thead>tr>th {
+    font-weight: bold;
+    text-align: center;
+}
+
+#main-table>tbody>tr {
+    background: #F1F1F1;
+}
+
+
+#main-table td,
+#main-table th {
+    padding: 25px 10px;
+    font-weight: lighter;
+    text-align: center;
+}
+
+.material-icon {
+    height: 30%;
+    width: 30%;
 }
