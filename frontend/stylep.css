@@ -117,6 +117,68 @@ a:hover {
 }
 
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.nav-container {
+    height: 80px;
+    background: #fffffa;
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.wrapper {
+    width: 100%;
+    margin: 0 auto;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    height: 80px;
+    padding-left: 10%;
+    justify-content: space-between;
+}
+
+#mcv-logo {
+    width: 185px;
+    height: 37px;
+}
+
+button:hover {
+    box-shadow: 0 0 20px rgba(255, 182, 65, 0.5);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+#logout-button {
+    align-items: center;
+    justify-content: center;
+    display: inline-flex;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.info {
+    margin-left: 40%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 300;
+    font-size: normal;
+    line-height: 40px;
+    display: flex;
+    text-align: center;
+    color: #000000;
+    text-shadow: 2px 2px 5px red;
+    line-height: 15px;
+    word-spacing: 5px;
+
+
+}
+
 .select-container {
     margin-top: 80px;
     margin-bottom: 50px;
