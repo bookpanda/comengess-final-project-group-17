@@ -2,13 +2,14 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Prompt&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
 }
 
 .nav-container {
-    display: flex;
     height: 80px;
     background: #fffffa;
     box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.1);
@@ -23,7 +24,8 @@ nav {
     display: flex;
     align-items: center;
     height: 80px;
-    padding-left: 15%;
+    padding-left: 10%;
+    padding-right: 10%;
     justify-content: space-between;
 }
 
@@ -70,19 +72,19 @@ button:hover {
 }
 
 .select-container {
-    margin-top: 40px;
-    margin-bottom: 20px;
-    margin-left: 50%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
     display: flex;
 }
 
 .select-container select {
-    position: absolute;
-    transform: translate(-50%, -50%);
+    
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    width: 70%;
+    width: 100%;
     height: 30px;
     font-family: 'Inter';
     font-style: normal;
@@ -115,20 +117,26 @@ button:hover {
 
 .table-container {  
     display: flex;
+    padding-left: 10%;
+    padding-right: 10%;
 }
 
 .table-title {
-  padding-left: 15%;
+  padding-left: 10%;
+  padding-top: 3%;
+  padding-bottom: 3%;
 }
 
 #main-table {
     margin: auto;
-  width: 70%;
+  width: 100%;
   background: #EEE;
   border-radius: 10px;
   border-collapse: collapse;
   overflow: hidden;
-  font-size: 14px
+  font-size: 14px;
+  font-family: Poppins, Prompt, sans-serif;
+  font-weight: 700;
   
 }
 
@@ -141,8 +149,10 @@ tr :last-child {
 }
 
 #main-table>thead {
-    background-color: #95A5A6;
+    background-color: #F0CC95;
   color: black;
+  font-size: 20px;
+  
 }
 
 #main-table>thead>tr>th {
