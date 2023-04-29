@@ -4,6 +4,61 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=Prompt&display=swap');
 
+@import url('https://fonts.googleapis.com/css?family=Montserrat:600&display=swap');
+
+nav span {
+    position: relative;
+    display: inline-flex;
+    width: 180px;
+    height: 55px;
+    margin: 0 15px;
+    perspective: 1000px;
+    cursor: pointer;
+    text-decoration: none;
+
+}
+
+a {
+    font-size: 19px;
+    letter-spacing: 1px;
+    transform-style: preserve-3d;
+    transform: translateZ(-25px);
+    transition: transform .25s;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+a:before,
+a:after {
+    position: absolute;
+    content: "LOGOUT";
+    height: 55px;
+    width: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid black;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+a:before {
+    color: #fff;
+    background: #000;
+    transform: rotateY(0deg) translateZ(25px);
+}
+
+a:after {
+    color: #000;
+    transform: rotateX(90deg) translateZ(25px);
+}
+
+a:hover {
+    transform: translateZ(-25px) rotateX(-90deg);
+}
+
+
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -41,31 +96,12 @@ button:hover {
     text-decoration: none;
 }
 
-#logout-button {
-    align-items: center;
-    justify-content: center;
-    display: inline-flex;
-    margin: 30px;
-    width: 100.48px;
-    min-width: 7.5%;
-    height: 42.87px;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    color: #ffffff;
-    background: linear-gradient(90deg, #F17575 0%, #FCBA47 104.29%);
-    border-radius: 50px;
-    border: #fffffa;
-    cursor: pointer;
-    text-decoration: none;
-}
-
 .info {
     margin-left: 40%;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 300;
-    font-size: small;
+    font-size: normal;
     line-height: 40px;
     display: flex;
     text-align: center;
