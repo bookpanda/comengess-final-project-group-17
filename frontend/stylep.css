@@ -377,6 +377,16 @@ tr :last-child {
 }
 
 .button-describe {
+    margin-top: 7%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-size: 15px;
+    color: #686868;
+    line-height: 150%;
+    width: 180px;
+}
+
+.checkall-describe {
     font-family: 'Inter';
     font-style: normal;
     font-size: 15px;
@@ -394,7 +404,7 @@ tr :last-child {
     margin-bottom: 1%;
 }
 
-.checkall-container {
+#checkall-container {
     display: flex;
     justify-content: center;
     margin-bottom: 15.5px;

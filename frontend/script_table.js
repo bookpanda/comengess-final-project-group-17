@@ -1,6 +1,8 @@
 import { dbGetCourseMaterials } from './apis/dbApi/index.js';
 document.getElementById("command1").style.display = "none";
 document.getElementById("add-block").style.display = "none";
+document.getElementById("checkall-container").style.display = "none";
+
 
 
 
@@ -35,6 +37,9 @@ export const createMaterialsTable = async () => {
   });
   document.getElementById("command1").style.display = "";
   document.getElementById("add-block").style.display = "";
+  document.getElementById("checkall-container").style.display = "flex";
+
+
   CheckAll();
 
    
