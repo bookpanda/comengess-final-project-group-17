@@ -126,6 +126,7 @@ span {
     h1 span {
         line-height: 60px;
         margin-bottom: 50px;
+        width: 55vw;
     }
 
     header p {
@@ -161,7 +162,7 @@ span {
 
 
 /* For screens smaller than 768px (smaller than iPad air)*/
-@media only screen and (max-width:760px) {
+@media only screen and (max-width:767px) {
 
     h1,
     h1 span {
@@ -223,6 +224,5 @@ span {
         margin-top: 30%;
     }
 
-    
+
 }
-    
