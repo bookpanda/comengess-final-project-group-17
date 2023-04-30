@@ -220,7 +220,7 @@ select::marker {
 }
 
 .button-selec {
-    
+
     display: flex;
     justify-content: space-evenly;
     margin-bottom: 3%;
@@ -377,13 +377,12 @@ tr :last-child {
 }
 
 .button-describe {
-    margin-top: 10%;
-    margin-bottom: 10%;
     font-family: 'Inter';
     font-style: normal;
     font-size: 15px;
     color: #686868;
     line-height: 150%;
+    width: 180px;
 }
 
 .credit-container {
@@ -397,10 +396,13 @@ tr :last-child {
 
 .checkall-container {
     display: flex;
+    justify-content: center;
+    margin-bottom: 15.5px;
+
 }
 
 #select-all-checkbox {
-    margin-right: 20%;
+    margin-right: 5%;
     width: 25px;
     height: 25px;
     padding-top: 2.5%;
