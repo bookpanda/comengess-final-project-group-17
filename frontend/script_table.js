@@ -13,16 +13,16 @@ export const createMaterialsTable = async () => {
   data.Items.map((mat) => {
     table.innerHTML += `<tr>
         <td>
-          ${mat.item_id}
-        </td>
-        <td>
-          <input type="checkbox" id="${mat.item_id}" name="${mat.item_id}" value="${mat.item_id}" checked>
+          <input type="checkbox" id="${mat.item_id}" name="${mat.item_id}" value="${mat.item_id}" class="checkbox"  checked>
         </td>
         <td>
           <img class="material-icon" alt="icon" src="${mat.thumbnail}" />
         </td>
         <td>
           ${mat.title}
+        </td>
+        <td>
+          ${mat.item_id}
         </td>
       </tr>
       `;
