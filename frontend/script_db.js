@@ -29,7 +29,7 @@ const addCourseMaterialsToDb = async () => {
   var button = document.getElementById('command2');
   button.classList.remove('loading');
   button.innerText = 'Add Course';
-  des.innerText = "Don't find any material? Try this."
+  des.innerText = "already successfully completed"
 
 };
 window.addCourseMaterialsToDb = addCourseMaterialsToDb;

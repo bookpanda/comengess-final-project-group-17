@@ -38,13 +38,10 @@ export const createMaterialsTable = async () => {
   document.getElementById("command1").style.display = "";
   document.getElementById("add-block").style.display = "";
   document.getElementById("checkall-container").style.display = "flex";
-
-
   CheckAll();
 
-   
-
-
+  var des = document.getElementById('add-describe');
+  des.innerText = "Don't find any material? Try this."
 };
 window.createMaterialsTable = createMaterialsTable;
 
