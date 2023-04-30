@@ -29,7 +29,7 @@ const addCourseMaterialsToDb = async () => {
   var button = document.getElementById('command2');
   button.classList.remove('loading');
   button.innerText = 'Add Course';
-  des.innerText = "already successfully completed"
+  des.innerText = "If you still don't see any files, double-check your course name."
 
 };
 window.addCourseMaterialsToDb = addCourseMaterialsToDb;
