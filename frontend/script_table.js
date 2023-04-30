@@ -1,12 +1,12 @@
 import { dbGetCourseMaterials } from './apis/dbApi/index.js';
-document.getElementById("command1").style.display ="none";
-document.getElementById("add-block").style.display ="none";
+document.getElementById("command1").style.display = "none";
+document.getElementById("add-block").style.display = "none";
 
 
 
 export const createMaterialsTable = async () => {
 
-  
+
   const table_body = document.getElementById('main-table-body');
   table_body.innerHTML = '';
   const cv_cid = document.getElementById('subject-select').value;
@@ -19,7 +19,7 @@ export const createMaterialsTable = async () => {
   data.Items.map((mat) => {
     table.innerHTML += `<tr>
         <td>
-          <input type="checkbox" id="${mat.item_id}" name="${mat.item_id}" value="${mat.item_id}" class="checkbox"  checked>
+          <input type="checkbox" id="${mat.item_id}" name="${mat.item_id}" value="${mat.item_id}" class="checkbox">
         </td>
         <td>
           <img class="material-icon" alt="icon" src="${mat.thumbnail}" />
@@ -33,9 +33,9 @@ export const createMaterialsTable = async () => {
       </tr>
       `;
   });
-  document.getElementById("command1").style.display ="";
-  document.getElementById("add-block").style.display ="";
+  document.getElementById("command1").style.display = "";
+  document.getElementById("add-block").style.display = "";
 
-  
+
 };
 window.createMaterialsTable = createMaterialsTable;
