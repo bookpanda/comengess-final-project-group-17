@@ -185,6 +185,7 @@ button:hover {
 }
 
 .section-title {
+    margin-right: 8%;
     margin-bottom: 2%;
     font-family: 'Andika New Basic';
     font-style: normal;
@@ -299,6 +300,8 @@ h2 {
 }
 
 .table-title {
+    display: flex;
+    align-items: center;
     padding-left: 10%;
     padding-top: 3%;
 }
@@ -390,4 +393,16 @@ tr :last-child {
     justify-content: center;
     margin-top: 50px;
     margin-bottom: 1%;
+}
+
+.checkall-container {
+    display: flex;
+}
+
+#select-all-checkbox {
+    margin-right: 20%;
+    width: 25px;
+    height: 25px;
+    padding-top: 2.5%;
+    cursor: pointer;
 }
