@@ -36,8 +36,8 @@ nav {
 .header-container {
     height: calc(100vh - 80px);
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    margin-top: 50px;
 
 }
 
@@ -51,32 +51,23 @@ header h1 {
     font-family: 'Andika New Basic';
     font-style: normal;
     font-weight: 700;
-    font-size: 75px;
-    line-height: 40px;
     color: #000000;
-    margin-bottom: 50px;
-    line-height: 60px;
 }
 
 header p {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
-    line-height: 34px;
+    font-size: small;
     color: #5B5858;
-    margin-bottom: 40px;
 }
 
 header button {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
-    font-size: 33px;
     color: #ffffff;
 
-    width: 200.48px;
-    height: 75.87px;
     background: linear-gradient(90deg, #F17575 0%, #FCBA47 104.29%);
     border-radius: 50px;
     border: #fffffa;
@@ -105,7 +96,6 @@ header button:active {
 header .image-content {
     position: relative;
     width: 50vw;
-    display: flex;
     margin-top: 7vh;
     justify-content: center;
 }
@@ -114,7 +104,6 @@ span {
     font-family: 'Andika New Basic';
     font-style: normal;
     font-weight: 700;
-    font-size: 75px;
     line-height: 100px;
     color: #C08504;
     margin-bottom: 40px;
@@ -124,19 +113,74 @@ span {
 .credit-container {
     display: flex;
     align-items: center;
-
+    font-size: small;
     justify-content: center;
     margin-top: 50px;
 
 }
 
-.non-image-content {
-    width: 50vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 2vh;
-    padding-left: 10vw;
+/* For screens smaller than 768px */
+@media (max-width: 767px) {
+
+    h1,
+    h1 span {
+        line-height: 40px;
+        margin-bottom: 20px;
+    }
+
+    header p {
+        line-height: 20px;
+        margin-bottom: 30px;
+    }
+
+    header button {
+        font-size: 18px;
+        width: 100.48px;
+        height: 50.87px;
+    }
+
+    .non-image-content {
+        width: 90%;
+        padding-left: 5%;
+        font-size: large;
+    }
+
+    #file-icon {
+        max-width: 50px;
+        max-height: 50px;
+    }
+}
+
+/* For screens larger than 768px */
+@media (min-width: 768px) {
+
+    h1,
+    h1 span {
+        line-height: 60px;
+        margin-bottom: 50px;
+    }
+
+    header p {
+        line-height: 34px;
+        margin-bottom: 40px;
+    }
+
+    header button {
+        font-size: 33px;
+        width: 200.48px;
+        height: 75.87px;
+    }
+
+    .non-image-content {
+        width: 50vw;
+        padding-left: 10vw;
+        font-size: xx-large;
+    }
+
+    #file-icon {
+        max-width: 76%;
+        max-height: 76%;
+    }
 }
 
 #file-icon {
