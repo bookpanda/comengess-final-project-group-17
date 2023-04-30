@@ -260,8 +260,8 @@ select::marker {
     font-size: 70%;
     background: #835505;
     color: #ffffff;
-    transition: background 0.8s;
-}
+    cursor: pointer;
+    transition: opacity 0.3s ease-in-out;}
 
 #command1:hover {
     background: black;
@@ -287,6 +287,11 @@ select::marker {
     transition: background 0s;
     background-color: white;
     background-size: 100%;
+}
+
+#command2.loading {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 h2 {

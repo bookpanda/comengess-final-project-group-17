@@ -14,10 +14,23 @@ const getCourseMaterialsFromDb = async () => {
 window.getCourseMaterialsFromDb = getCourseMaterialsFromDb;
 
 const addCourseMaterialsToDb = async () => {
+  var button = document.getElementById('command2');
+  button.classList.add('loading');
+  button.innerText = 'Loading';
+  var des = document.getElementById('add-describe');
+  des.innerText = 'Relax,take ur time'
+
   const cv_cid = document.getElementById('subject-select').value;
   const data = await dbAddCourseMaterials(cv_cid);
   console.log(data);
+
   await createMaterialsTable();
+
+  var button = document.getElementById('command2');
+  button.classList.remove('loading');
+  button.innerText = 'Add Course';
+  des.innerText = "Don't find any material? Try this."
+
 };
 window.addCourseMaterialsToDb = addCourseMaterialsToDb;
 
