@@ -58,7 +58,6 @@ header p {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
-    font-size: small;
     color: #5B5858;
 }
 
@@ -131,6 +130,7 @@ span {
     header p {
         line-height: 20px;
         margin-bottom: 30px;
+        font-size: small;
     }
 
     header button {
@@ -163,6 +163,7 @@ span {
     header p {
         line-height: 34px;
         margin-bottom: 40px;
+        font-size: 18px;
     }
 
     header button {
