@@ -35,17 +35,6 @@
                 <option value="none" id="start-choice" class="all-select">Choose course</option>
             </select>
         </div>
-        <div class="button-selec">
-            <div class="button">
-                <button id="command1" class="bt" onclick=addCourseMaterialsToDb()>
-                    Add Course
-                </button>
-                <button id="command2" class="bt" onclick=downloadSelectedItems()>
-                    Download ZIP
-                </button>
-            </div>
-        </div>
-
         <div class="table-section">
             <div class="table-title">
                 <h2 class="section-title">Material list</h2>
@@ -54,10 +43,10 @@
                 <table id="main-table">
                     <thead>
                         <tr id="main-table-head">
-                            <th>Check</th>
-                            <th>File Type</th>
-                            <th>Title</th>
-                            <th>ID</th>
+                            <th style="width: 9.37%">Select</th>
+                            <th style="width: 31.24%">File Type</th>
+                            <th style="width: 51.93%">Title</th>
+                            <th style="width: 7.45%;">ID</th>
                         </tr>
                     </thead>
                     <tbody id="main-table-body">
@@ -65,7 +54,27 @@
                 </table>
             </div>
         </div>
+        <div class="button-selec">
+            <div class="button">
+                <button id="command1" class="bt" onclick=downloadSelectedItems()>
+                    Download ZIP
+                </button>
+               <!-- <p class = "button-describe">Let's dowload <br>all selected materials.</p> -->
+            </div>
+    
+            <div class="button" id = "add-block">
+                <button id="command2" class="bt" onclick=addCourseMaterialsToDb()>
+                    Add Course
+                </button>
+                <p class = "button-describe">Don't find any material? <br>Try this.</p> 
+            </div>    
+        </div>
 
+        <div class="credit-container">
+            <p>
+                &#169; 2110221 Computer Engineering Essentials (2022/2) &#169;
+            </p>
+        </div>
 
     </div>
 
