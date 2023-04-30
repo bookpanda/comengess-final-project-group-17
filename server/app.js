@@ -3,7 +3,6 @@
 import express from 'express';
 import cors from 'cors';
 
-import bodyParser from 'body-parser';
 import session from 'express-session';
 
 import { AppError } from './utils/appError.js';
@@ -30,8 +29,8 @@ const corsOptions = {
 app.use(express.static('static'));
 app.use(cors(corsOptions));
 app.use(session(sessionOptions));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use('/items', itemsRoutes);
 app.use('/courseville', coursevilleRoutes);

@@ -1,6 +1,12 @@
 import { dbGetCourseMaterials } from './apis/dbApi/index.js';
+document.getElementById("command1").style.display ="none";
+document.getElementById("add-block").style.display ="none";
+
+
 
 export const createMaterialsTable = async () => {
+
+  
   const table_body = document.getElementById('main-table-body');
   table_body.innerHTML = '';
   const cv_cid = document.getElementById('subject-select').value;
@@ -27,5 +33,9 @@ export const createMaterialsTable = async () => {
       </tr>
       `;
   });
+  document.getElementById("command1").style.display ="";
+  document.getElementById("add-block").style.display ="";
+
+  
 };
 window.createMaterialsTable = createMaterialsTable;
