@@ -84,33 +84,54 @@ export const getSelectedItems = async (req, res) => {
       req.body
     );
     console.log(filepaths);
+    if (filepaths.length > 0) {
+      const download = spawn(
+        `rm -r -f * && ${filepaths.join(' && ')} && zip -r download_mcv.zip .`,
+        {
+          cwd: './spawn',
+          shell: true,
+        }
+      );
+      download.stdout.on('data', (data) => {
+        // console.log(`stdout: ${data}`);
+      });
 
-    const download = spawn(
-      `rm -r -f * && ${filepaths.join(' && ')} && zip -r download_mcv.zip .`,
-      {
+      download.stderr.on('data', (data) => {
+        // console.log(`stderr: ${data}`);
+      });
+
+      download.on('error', (error) => {
+        // console.log(`error: ${error.message}`);
+      });
+
+      download.on('close', (code) => {
+        console.log(`child process exited with code ${code}`);
+        const __dirname = dirname(fileURLToPath(import.meta.url));
+        const file = path.join(__dirname, '../spawn/download_mcv.zip');
+        // console.log(file);
+        res.download(file);
+      });
+    } else {
+      const remove = spawn(`rm -r -f *`, {
         cwd: './spawn',
         shell: true,
-      }
-    );
-    download.stdout.on('data', (data) => {
-      // console.log(`stdout: ${data}`);
-    });
+      });
+      remove.stdout.on('data', (data) => {
+        // console.log(`stdout: ${data}`);
+      });
 
-    download.stderr.on('data', (data) => {
-      // console.log(`stderr: ${data}`);
-    });
+      remove.stderr.on('data', (data) => {
+        // console.log(`stderr: ${data}`);
+      });
 
-    download.on('error', (error) => {
-      // console.log(`error: ${error.message}`);
-    });
+      remove.on('error', (error) => {
+        // console.log(`error: ${error.message}`);
+      });
 
-    download.on('close', (code) => {
-      console.log(`child process exited with code ${code}`);
-      const __dirname = dirname(fileURLToPath(import.meta.url));
-      const file = path.join(__dirname, '../spawn/download_mcv.zip');
-      // console.log(file);
-      res.download(file);
-    });
+      remove.on('close', (code) => {
+        console.log(`child process exited with code ${code}`);
+      });
+    }
   } catch (err) {
     console.error(err);
     res.status(500).send(err);
