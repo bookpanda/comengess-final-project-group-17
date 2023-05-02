@@ -5,7 +5,16 @@ export const fetchGetProfileInfo = async (cv_cid) => {
     `http://${backendIPAddress}/courseville/get_profile_info`,
     getOption
   )
-    .then((response) => response.json())
-    .catch((error) => console.error(error));
+    .then((response) => {
+      // Redirect to login page if 401
+      if (response.status === 401) {
+        window.location.href = `/login.html`;
+      }
+
+      return response.json();
+    })
+    .catch((error) => {
+      console.error(error);
+    });
   return data;
 };
