@@ -120,7 +120,7 @@ span {
 
 
 /* For screens larger than 768px (bigger than Ipad air)*/
-@media (min-width: 768px) {
+@media (min-width: 1000px) {
 
     h1,
     h1 span {
@@ -142,6 +142,7 @@ span {
     }
 
     .non-image-content {
+        
         width: 50vw;
         padding-left: 10vw;
         font-size: 179%;
@@ -160,9 +161,75 @@ span {
 }
 
 
+@media only screen and (max-width:1000px) {
+
+    h1,
+    h1 span {
+        line-height: 120%;
+        margin-bottom: 20px;
+    }
+
+    header {
+        flex-direction: column-reverse;
+        margin: auto;
+        margin-right: 5%;
+        margin-left: 5%;
+    }
+
+    header p {
+        line-height: 20px;
+        margin-bottom: 30px;
+        font-size: small;
+    }
+
+    header button {
+        font-size: 18px;
+        width: 100.48px;
+        height: 50.87px;
+    }
+
+    header .image-content {
+        position: relative;
+        display: flex;
+        width: 50vw;
+        margin-top: 5vh;
+        margin-bottom: 6vh;
+        justify-content: center;
+    }
+
+    .non-image-content {
+        width: 90%;
+        padding-left: 5%;
+        font-size: 2.5em;
+        margin-bottom: 5vh;
+        justify-content: center;
+        text-align: center;
+    }
+
+    #file-icon {
+        max-width: 76%;
+        max-height: 76%;
+    }
+
+    header button {
+        width: 100%;
+    }
+
+    .credit-container {
+        display: flex;
+        align-items: center;
+        font-size: small;
+        justify-content: center;
+        margin-top: 30%;
+    }
+
+
+}
+
+
 
 /* For screens smaller than 768px (smaller than iPad air)*/
-@media only screen and (max-width:767px) {
+@media only screen and (max-width:768px) {
 
     h1,
     h1 span {
