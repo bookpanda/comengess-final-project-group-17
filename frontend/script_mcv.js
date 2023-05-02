@@ -6,7 +6,7 @@ import {
   fetchGetCourseMaterialsLinks,
   fetchGetProfileInfo,
 } from './apis/mcvApi/index.js';
-import { backendIPAddress, getGroupNumber } from './utils/constants.js';
+import { backendIPAddress } from './utils/constants.js';
 
 const authorizeApplication = () => {
   window.location.href = `http://${backendIPAddress}/courseville/auth_app`;
@@ -89,5 +89,3 @@ const logout = async () => {
   window.location.href = `http://${backendIPAddress}/courseville/logout`;
 };
 window.logout = logout;
-
-document.getElementById('group-id').innerHTML = getGroupNumber();
