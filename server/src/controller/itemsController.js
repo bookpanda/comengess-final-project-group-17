@@ -62,10 +62,17 @@ export const deleteItem = async (req, res) => {
 // get all things from course id
 /** @satisfies {import('express').RequestHandler} */
 export const addAllAvailableItems = async (req, res) => {
+  const token = req.session.token?.access_token;
+
+  if (!token) {
+    res.status(401).send('No access token');
+    return;
+  }
+
   try {
     const data = await ItemsService.addAllAvailableItems(
       docClient,
-      req.session.token.access_token,
+      token,
       req.params.cv_cid
     );
     res.send(data);
@@ -77,10 +84,17 @@ export const addAllAvailableItems = async (req, res) => {
 
 /** @satisfies {import('express').RequestHandler} */
 export const getSelectedItems = async (req, res) => {
+  const token = req.session.token?.access_token;
+
+  if (!token) {
+    res.status(401).send('No access token');
+    return;
+  }
+
   try {
     const filepaths = await ItemsService.getSelectedItems(
       docClient,
-      req.session.token.access_token,
+      token,
       req.body
     );
     console.log(filepaths);

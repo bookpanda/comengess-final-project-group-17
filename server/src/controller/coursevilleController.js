@@ -78,10 +78,17 @@ export const accessToken = (req, res) => {
 // Example: Send "GET" request to CV endpoint to get user profile information
 /** @satisfies {import('express').RequestHandler} */
 export const getProfileInformation = (req, res) => {
+  const token = req.session.token?.access_token;
+
+  if (!token) {
+    res.status(401).send('No access token');
+    return;
+  }
+
   try {
     const profileOptions = {
       headers: {
-        Authorization: `Bearer ${req.session.token.access_token}`,
+        Authorization: `Bearer ${token}`,
       },
     };
     const profileReq = https.request(
@@ -106,30 +113,41 @@ export const getProfileInformation = (req, res) => {
   } catch (error) {
     console.log(error);
     console.log('Please logout, then login again.');
+    res.status(500).send(`${error}`);
   }
 };
 
 /** @satisfies {import('express').RequestHandler} */
 export const getCourses = async (req, res) => {
+  const token = req.session.token?.access_token;
+
+  if (!token) {
+    res.status(401).send('No access token');
+    return;
+  }
+
   try {
-    const data = await CoursevilleService.getCourses(
-      req.session.token.access_token
-    );
+    const data = await CoursevilleService.getCourses(token);
     res.send(data);
   } catch (error) {
     console.log(error);
     console.log('Please logout, then login again.');
+    res.status(500).send(`${error}`);
   }
 };
 
 /** @satisfies {import('express').RequestHandler} */
 export const getCourseInfo = async (req, res) => {
+  const token = req.session.token?.access_token;
+
+  if (!token) {
+    res.status(401).send('No access token');
+    return;
+  }
+
   const cv_cid = req.params.cv_cid;
   try {
-    const data = await CoursevilleService.getCourseInfo(
-      req.session.token.access_token,
-      cv_cid
-    );
+    const data = await CoursevilleService.getCourseInfo(token, cv_cid);
     res.send(data);
   } catch (error) {
     console.log(error);
@@ -139,12 +157,16 @@ export const getCourseInfo = async (req, res) => {
 
 /** @satisfies {import('express').RequestHandler} */
 export const getCourseAssignments = async (req, res) => {
+  const token = req.session.token?.access_token;
+
+  if (!token) {
+    res.status(401).send('No access token');
+    return;
+  }
+
   const cv_cid = req.params.cv_cid;
   try {
-    const data = await CoursevilleService.getCourseAssignments(
-      req.session.token.access_token,
-      cv_cid
-    );
+    const data = await CoursevilleService.getCourseAssignments(token, cv_cid);
     res.send(data);
   } catch (error) {
     console.log(error);
@@ -154,12 +176,16 @@ export const getCourseAssignments = async (req, res) => {
 
 /** @satisfies {import('express').RequestHandler} */
 export const getCourseMaterials = async (req, res) => {
+  const token = req.session.token?.access_token;
+
+  if (!token) {
+    res.status(401).send('No access token');
+    return;
+  }
+
   const cv_cid = req.params.cv_cid;
   try {
-    const data = await CoursevilleService.getCourseMaterials(
-      req.session.token.access_token,
-      cv_cid
-    );
+    const data = await CoursevilleService.getCourseMaterials(token, cv_cid);
     res.send(data);
   } catch (error) {
     console.log(error);
@@ -169,12 +195,16 @@ export const getCourseMaterials = async (req, res) => {
 
 /** @satisfies {import('express').RequestHandler} */
 export const getMaterial = async (req, res) => {
+  const token = req.session.token?.access_token;
+
+  if (!token) {
+    res.status(401).send('No access token');
+    return;
+  }
+
   const item_id = req.params.item_id;
   try {
-    const data = await CoursevilleService.getMaterial(
-      req.session.token.access_token,
-      item_id
-    );
+    const data = await CoursevilleService.getMaterial(token, item_id);
     res.send(data);
   } catch (error) {
     console.log(error);
@@ -184,10 +214,17 @@ export const getMaterial = async (req, res) => {
 
 /** @satisfies {import('express').RequestHandler} */
 export const getCourseMaterialsLinks = async (req, res) => {
+  const token = req.session.token?.access_token;
+
+  if (!token) {
+    res.status(401).send('No access token');
+    return;
+  }
+
   const cv_cid = req.params.cv_cid;
   try {
     const data = await CoursevilleService.getCourseMaterialsLinks(
-      req.session.token.access_token,
+      token,
       cv_cid
     );
     res.send(data);
@@ -199,7 +236,7 @@ export const getCourseMaterialsLinks = async (req, res) => {
 
 /** @satisfies {import('express').RequestHandler} */
 export const logout = (req, res) => {
-  req.session.destroy();
+  req.session.destroy(() => null);
   res.redirect(`http://${process.env.frontendIPAddress}/login.html`);
   res.end();
 };
