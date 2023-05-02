@@ -102,7 +102,7 @@ export const getSelectedItems = async (req, res) => {
       const download = spawn(
         `rm -r -f * && ${filepaths.join(' && ')} && zip -r download_mcv.zip .`,
         {
-          cwd: './spawn',
+          cwd: '../spawn',
           shell: true,
         }
       );
@@ -121,13 +121,13 @@ export const getSelectedItems = async (req, res) => {
       download.on('close', (code) => {
         console.log(`child process exited with code ${code}`);
         const __dirname = dirname(fileURLToPath(import.meta.url));
-        const file = path.join(__dirname, '../spawn/download_mcv.zip');
+        const file = path.join(__dirname, '../../spawn/download_mcv.zip');
         // console.log(file);
         res.download(file);
       });
     } else {
       const remove = spawn(`rm -r -f *`, {
-        cwd: './spawn',
+        cwd: '../spawn',
         shell: true,
       });
       remove.stdout.on('data', (data) => {
