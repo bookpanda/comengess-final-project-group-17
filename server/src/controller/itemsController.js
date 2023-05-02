@@ -102,7 +102,7 @@ export const getSelectedItems = async (req, res) => {
       const download = spawn(
         `rm -r -f * && ${filepaths.join(' && ')} && zip -r download_mcv.zip .`,
         {
-          cwd: '../spawn',
+          cwd: './spawn',
           shell: true,
         }
       );
@@ -127,7 +127,7 @@ export const getSelectedItems = async (req, res) => {
       });
     } else {
       const remove = spawn(`rm -r -f *`, {
-        cwd: '../spawn',
+        cwd: './spawn',
         shell: true,
       });
       remove.stdout.on('data', (data) => {

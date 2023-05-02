@@ -15,8 +15,6 @@ export async function getCourseItems(client, cv_cid) {
       ':cv_cid': cv_cid,
     },
   };
-  console.log(params);
   const data = await client.send(new ScanCommand(params));
-console.log(data);
   return data;
 }
